@@ -36,7 +36,7 @@
             </div>
             <div data-role="content" class="app">
             </div>
-            <div data-theme="a" data-role="footer" data-position="fixed" id="navigation">
+<!--             <div data-theme="a" data-role="footer" data-position="fixed" id="navigation">
                 <ul class="nav-list" data-role="listview" data-inset="true" >
                     <li data-theme="c">
                         <a href="#">
@@ -51,7 +51,7 @@
                     </li>
                 <ul>
             </div>
-        </div>
+ -->        </div>
 
         <!-- Routes page -->
         <div data-role="page" id="page-routes">
@@ -62,17 +62,33 @@
 
         <script type="template/mustache" id="stops-tpl">
 
+        <img src="{{map}}"/>
         <ul data-role="listview" data-divider-theme="b" data-inset="true" class="transit-list">
-
             {{#stops}}
+            <span style="color:{{color_fg}}; text-shadow:none; background-color:{{color_bg}}">{{letter}}</span>
             <li data-role="list-divider" role="heading" class="stop">
                Stop at: {{lat}},{{lon}} 
             </li>
             {{#routes}}
             <li data-theme="c">
-                <img src="images/bus.png" />
                 <a href="#page-routes" data-transition="slide">
-            Route of type {{type}} with name {{name}} comes at {{#times}}{{.}},{{/times}}
+                <div class="col-icon">
+                    <img src="images/bus.png" />
+                    <span class="transit-type"> TTC</span>
+                </div>
+                <div class="col-info">
+                       Route of type <span class="transit-type">{{type}} </span> with <span class="transit-name"> {{name}} </span> comes at {{#times}}{{.}},{{/times}}
+                </div>
+                <div class="col-time">
+                    <div class="time-icon-outer">
+                        <div class="time-icon-inner">
+                            <p class="time-text">
+                                <span class="time">50 </span>
+                                <!-- <span class="time-metric">mins</span> --!>
+                            </p>
+                        </div>
+                    </div>
+                </div>
                 </a>
             </li>
             {{/routes}}                    
