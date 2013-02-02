@@ -66,3 +66,83 @@ a img {
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
   display: block;
 }
+
+/* line 11, ../sass/screen.scss */
+body {
+  background: grey;
+}
+
+/* line 15, ../sass/screen.scss */
+html {
+  width: 100%;
+  height: 100%;
+}
+
+/* line 20, ../sass/screen.scss */
+#main-wrapper {
+  height: 100%;
+  width: 100%;
+}
+
+/* line 25, ../sass/screen.scss */
+.main {
+  background: white;
+  height: 100%;
+  width: 100%;
+  max-width: 500px;
+  max-height: 900px;
+  overflow: hidden;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+  border-radius: 20px;
+  -webkit-box-shadow: rgba(50, 50, 50, 0.75) 0px 0px 50px;
+  -moz-box-shadow: rgba(50, 50, 50, 0.75) 0px 0px 50px;
+  box-shadow: rgba(50, 50, 50, 0.75) 0px 0px 50px;
+  margin: 0 auto;
+}
+
+/* line 38, ../sass/screen.scss */
+header {
+  height: 10%;
+  background: green;
+}
+/* line 41, ../sass/screen.scss */
+header h1 {
+  color: white;
+  font-size: 2em;
+  font-family: Arial black, Arial black, Gadget, sans-serif;
+  padding: .5em;
+}
+
+/* line 49, ../sass/screen.scss */
+#content {
+  height: 75%;
+  width: 100%;
+}
+
+/* line 54, ../sass/screen.scss */
+#navigation {
+  background: purple;
+  height: 100px;
+  width: 100%;
+}
+/* line 59, ../sass/screen.scss */
+#navigation .nav-list li {
+  height: 100%;
+  width: 33.33%;
+  float: left;
+}
+
+/* line 67, ../sass/screen.scss */
+.transit-list {
+  overflow-y: hidden;
+}
+/* line 69, ../sass/screen.scss */
+.transit-list li {
+  height: 120px;
+  border-bottom: 1px solid grey;
+  text-align: center;
+  font: 1.5em white;
+}
