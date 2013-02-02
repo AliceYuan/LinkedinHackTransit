@@ -103,7 +103,6 @@ $(document).on('pageinit', "[data-role='page']", function() {
           for(var r in stop.routes) {
             var new_route = {};
             new_route = stop.routes[r];
-            console.log(new_route.times);
             new_route.first_time = Math.min.apply(null, new_route.times);
             new_route.json = JSON.stringify(stop);
             new_routes.push(new_route);
