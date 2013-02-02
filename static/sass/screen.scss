@@ -9,7 +9,6 @@
 
 body{
 	background: white;
-	min-width: 300px;
 	overflow-x: auto;
 }
 
@@ -23,32 +22,45 @@ html{
 }
 
 .ui-page{
-	min-width: 350px;
 	.ui-header{
 		.app-title{
-			margin: 1em auto;
+			margin:.5em 0 0 0;
 			font-family: 'LimelightRegular',Arial,sans-serif;
+			font-size: 1.5em;
 
 		}
 		.options{
-			position:  absolute;
-			top: 10px;
-			right: 10px;
-			margin: 0;
-			width: 20%;
-			min-width: 150px;
-			display: inline-block;
+			margin: 0 auto;
+			width: 100%;
+
+			.ui-select {
+				width: 78%;
+				margin: 0 auto;
+				display:  block;
+				padding: 10px;
+			}
 		}
 
 	}
 }
 
-
-#page-stops{
+#page-routes .ui-icon-arrow-r {
+	display:none;
+}
+#page-stops, #page-routes{
 	.ui-content{
 		.transit-list{
 			.ui-li-divider	{
 				height: 30px;
+				.alpha-label{
+					font-weight: bold;
+					/*text-shadow: 1px 1px white;*/
+					font-size: 1.5em;
+					background-color: black;
+					padding: 2px 8px;
+					margin-right: 10px;
+					border-radius: 50%;
+				}
 			}
 			li.bus{
 				min-height: 120px;
@@ -90,7 +102,7 @@ html{
 					}
 					.time-icon-inner{
 						@include border-radius(50%);
-						background:  orange;
+						background:  #42A83D;
 						position: absolute;
 						left: 5px;
 						top:  5px;
@@ -101,9 +113,10 @@ html{
 							text-align: center;
 							color: white;
 							.time{
-								margin: .3em 0;
-								font-size: 2em;
+								margin: .5em 0;
+								font-size: 1.9em;
 								display: block;
+								font-weight: bold;
 							}
 							.time-metric{
 

@@ -2,15 +2,13 @@
 <html>
     <head>
         <meta charset="utf-8" />
-        <meta name="viewport" content="initial-scale=0.75, user-scalable=no" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black" />
         <meta name="apple-mobile-web-app-title" content="Bus Pointer" />
         <title>
             Bus Pointer
         </title>
-        <link rel="icon" type="image/png" href="images/bus.png" />
-        <link rel="apple-touch-icon-precomposed" type="image/png" href="images/bus.png" />
         <link href="stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" href="stylesheets/jquery.mobile-1.2.0.css" />
@@ -33,8 +31,8 @@
                     Bus Pointer
                 </h3>
                <div data-role="fieldcontain" class="options">
-                    <select name="search" data-mini="true">
-                        <option value="main">
+                    <select name="select" data-mini="true">
+                        <option value="main" >
                             Nearby
                         </option>
                         <option value="search">
@@ -52,8 +50,8 @@
 
         <!-- Routes page -->
         <div data-role="page" id="page-routes">
+            
             <div data-role="content" class="app">
-                test!
             </div>
         </div>
 
@@ -62,7 +60,7 @@
         <ul data-role="listview" data-divider-theme="b" data-inset="true" class="transit-list">
             {{#stops}}
             <li data-role="list-divider" role="heading" class="stop" >
-                <span style="color:{{color_fg}}; text-shadow:none; background-color:{{color_bg}}; border:2px solid white;">{{letter}}</span> {{name}}
+                <span class="alpha-label" style="color:{{color_fg}};">{{letter}}</span> {{name}}
             </li>
             {{#routes}}
             <li data-theme="c" class="bus" data-json="{{json}}">
@@ -82,7 +80,7 @@
                     </div>
                 </div>
                 <div class="col-info">
-                       <span class="transit-type">{{type}}</span>: <span class="transit-name"> {{direction}} </span>
+                       <span class="transit-name"> {{direction}} </span>
                 </div>
                 </a>
             </li>
@@ -98,24 +96,23 @@
                {{name}}
             </li>
             {{#times}}
-            <li data-theme="c">
+            <li data-theme="c" class="bus">
                 <a href="#">
                 <div class="col-icon">
                     <img src="images/bus.png" />
-                    <span class="transit-type"> TTC</span>
+                    <span class="transit-type"></span>
                 </div>
                 <div class="col-time">
                     <div class="time-icon-outer">
                         <div class="time-icon-inner">
                             <p class="time-text">
                                 <span class="time">{{.}} </span>
-                                <!-- <span class="time-metric">mins</span> --!>
                             </p>
                         </div>
                     </div>
                 </div>
                 <div class="col-info">
-                       Route of type <span class="transit-type">{{type}} </span> with <span class="transit-name"> {{name}} </span> 
+                       {{direction}}
                 </div>
                 </a>
             </li>
