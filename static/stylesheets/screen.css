@@ -71,7 +71,7 @@ html {
 }
 /* line 66, ../sass/screen.scss */
 #page-stops .ui-content .transit-list li .col-icon img {
-  height: 70%;
+  height: 80px;
   margin: 0.5em auto;
   float: left;
 }
@@ -85,9 +85,8 @@ html {
 }
 /* line 79, ../sass/screen.scss */
 #page-stops .ui-content .transit-list li .col-info {
-  float: left;
-  padding-right: 100px;
-  width: 80%;
+  white-space: normal;
+  margin-right: 100px;
 }
 /* line 84, ../sass/screen.scss */
 #page-stops .ui-content .transit-list li .col-time {
@@ -97,7 +96,7 @@ html {
 }
 /* line 88, ../sass/screen.scss */
 #page-stops .ui-content .transit-list li .col-time .time-icon-outer {
-  background: grey;
+  background: gray;
   height: 80px;
   width: 80px;
   -webkit-border-radius: 50%;
