@@ -65,15 +65,15 @@
         <img src="{{map}}"/>
         <ul data-role="listview" data-divider-theme="b" data-inset="true" class="transit-list">
             {{#stops}}
-            <li data-role="list-divider" role="heading" class="stop">
+            <li data-role="list-divider" role="heading" class="stop" >
                <span style="color:{{color_fg}}; text-shadow:none; background-color:{{color_bg}}; border:2px solid white;">{{letter}}</span> Stop {{name}} at: {{lat}},{{lon}} 
             </li>
             {{#routes}}
-            <li data-theme="c" data-json="{{json}}">
+            <li data-theme="c" class="bus" data-json="{{json}}">
                 <a href="#">
                 <div class="col-icon">
                     <img src="images/bus.png" />
-                    <span class="transit-type"> TTC</span>
+                    <span class="transit-type"></span>
                 </div>
                 <div class="col-time">
                     <div class="time-icon-outer">
