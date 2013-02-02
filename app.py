@@ -25,23 +25,22 @@ def createResponse(lat,lon):
     upcoming = getPredictions(float(lat), float(lon))
     upcoming = json.loads(upcoming)
     stops = []
+    lat = []
+    lon = []
     for stop in upcoming["Predictions"]:
         if stop:
-            route = createRoute(stop[1], stop[4], stop[6], stop[5])
-            stop = createStop(stop[2], stop[3], [route])
+            route = createRoute(stop[1], stop[6], stop[5])
+            stop = createStop(stop[2], stop[3], stop[4], [route])
             stops.append(stop)
     responseJSON = {"stops" : stops}
     return responseJSON
 
-def createStop(lat, lon, routes):
-    return {'lat':lat,'lon':lon, 'routes':routes}
+def createStop(lat, lon, intersection, routes):
+    return {'lat':lat,'lon':lon, 'intersection':intersection 'routes':routes}
 
-def createRoute(routeType, name, times, direction):
-    return {'type':routeType, 'name':name, 'times':times, 'direction':direction}
+def createRoute(routeTag, times, direction):
+    return {'type':routeTag, 'times':times, 'direction':direction}
  
-def createTimes(times):
-    return times
-
 if __name__ == '__main__':
     print createResponse("43.7196699","-79.4012199")
     port = int(os.environ.get('PORT', 5000))
