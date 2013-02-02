@@ -62,9 +62,10 @@
 
         <script type="template/mustache" id="stops-tpl">
 
+        <img src="{{map}}"/>
         <ul data-role="listview" data-divider-theme="b" data-inset="true" class="transit-list">
-
             {{#stops}}
+            <span style="color:{{color_fg}}; text-shadow:none; background-color:{{color_bg}}">{{letter}}</span>
             <li data-role="list-divider" role="heading" class="stop">
                Stop at: {{lat}},{{lon}} 
             </li>
