@@ -86,6 +86,6 @@ def getPredictions(latitude, longitude):
 	return json.dumps(predictionJSON, indent=2)
 
 if __name__=="__main__":
-	print getPredictions(43.7739, -79.41427)
+	# print getPredictions(43.7739, -79.41427)
 	# getRoutes()
 	# getStops()
