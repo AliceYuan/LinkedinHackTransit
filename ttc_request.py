@@ -11,30 +11,29 @@ def requestNextBusData(commandName, params):
 	return result
 
 def getNearbyStops(latitude, longitude):
-    stops = []
-    distances = []
-    with open('data/ttc_stops.json') as ttcStops:
-        stopJSON = json.load(ttcStops)
-        stops = stopJSON['Stops']
-    for stop in stops:
-        distances.append(distance([latitude, longitude], [float(stop[2]), float(stop[3])]))
-    stops = [stops for (distances, stops) in sorted(zip(distances, stops))]
-    data = { "Stops" : stops }
-	with open('data/ttc_sorted_stops.json', 'w') as ttcStops:
-		ttcStops.write(json.dumps(data, indent=2))
+	stops = []
+	distances = []
+	with open('data/ttc_stops.json') as ttcStops:
+		stopJSON = json.load(ttcStops)
+		stops = stopJSON["Stops"]
+	for stop in stops:
+		distances.append(distance([latitude, longitude], [float(stop[2]), float(stop[3])]))
+	stops = [stops for (distances, stops) in sorted(zip(distances, stops))]
+	stopsJSON = { "Stops" : stops }
+	return json.dumps(stopsJSON, indent=2)
 
 def distance(origin, destination):
-    lat1, lon1 = origin
-    lat2, lon2 = destination
-    radius = 6371 # km
+	lat1, lon1 = origin
+	lat2, lon2 = destination
+	radius = 6371 # km
 
-    dlat = math.radians(lat2-lat1)
-    dlon = math.radians(lon2-lon1)
-    a = math.sin(dlat/2) * math.sin(dlat/2) + math.cos(math.radians(lat1)) \
-    * math.cos(math.radians(lat2)) * math.sin(dlon/2) * math.sin(dlon/2)
-    c = 2 * math.atan2(math.sqrt(a), math.sqrt(1-a))
-    d = radius * c
-    return d
+	dlat = math.radians(lat2-lat1)
+	dlon = math.radians(lon2-lon1)
+	a = math.sin(dlat/2) * math.sin(dlat/2) + math.cos(math.radians(lat1)) \
+	* math.cos(math.radians(lat2)) * math.sin(dlon/2) * math.sin(dlon/2)
+	c = 2 * math.atan2(math.sqrt(a), math.sqrt(1-a))
+	d = radius * c
+	return d
 
 def getRoutes():
 	routes = requestNextBusData('routeList', 'r=')
@@ -60,31 +59,33 @@ def getStops():
 	with open('data/ttc_stops.json', 'w') as ttcStops:
 		ttcStops.write(json.dumps(stopJSON, indent=2))
 
-# def getPredictions(latitude, longitude):
-# 	predictionList = []
-# 	nearbyStops = json.loads(getNearbyStops(latitude, longitude))["Stops"]
-# 	# print json.dumps(nearbyStops, indent=4)
-# 	for stop in nearbyStops:
-# 		dictionary = {}
-# 		if 'stopId' in stop:
-# 			predictions = requestNextBusData('predictions', 'stopId='+stop["stopId"])
-# 			print predictions
-# 			rootPredictions = ET.fromstring(predictions)
-# 			for predictions in rootPredictions.findall('predictions'):
-# 				if len(predictions.findall('direction')) > 0:
-# 					for direction in predictions.findall('direction'):
-# 						for prediction in direction.findall('prediction'):
-# 							dictionary.update({'route': predictions.attrib["routeTag"], 'stop': predictions.attrib["stopTitle"], 'minutes': prediction.attrib["minutes"],'lat':stop["lat"],'lon':stop["lon"]})
-# 				else:
-# 					dictionary.update(predictions.attrib)
-# 		departures.append(dictionary)
-# 	data = { "Departures" : departures }
-# 	return data
+def getPredictions(latitude, longitude):
+	predictionList = []
+	numPredictions = 0
+	check = False
+	nearbyStops = json.loads(getNearbyStops(latitude, longitude))["Stops"]
+	for stop in nearbyStops:
+		if check:
+			break
+		predictions = requestNextBusData('predictions', 'r='+stop[1]+'&s='+stop[0])
+		rootPredictions = ET.fromstring(predictions)
+		for predictions in rootPredictions.findall('predictions'):
+			if check:
+				break
+			if 'dirTitleBecauseNoPredictions' not in predictions.attrib:
+				numPredictions += 1
+				if(numPredictions == 11):
+					check = True
+					break
+				for direction in predictions.findall('direction'):
+					minutes = []
+					for prediction in direction.findall('prediction'):
+						minutes.append(prediction.attrib["minutes"])
+					predictionList.append((predictions.attrib["stopTag"], predictions.attrib["routeTag"], stop[2], stop[3], predictions.attrib["stopTitle"], direction.attrib["title"], minutes))
+	predictionJSON = { "Predictions" : predictionList }
+	return json.dumps(predictionJSON, indent=2)
 
 if __name__=="__main__":
-	getNearbyStops(43.7739, -79.41427)
+	print getPredictions(43.7739, -79.41427)
 	# getRoutes()
 	# getStops()
-	# data = { "Stops" : stops }
-	# with open('ttc_stops.json', 'a') as ttcStops:
-	# 	ttcStops.write(json.dumps(data, indent=2))
