@@ -126,7 +126,7 @@ $(document).bind('pageinit', "[data-role='page']", function() {
         $('#page-stops .app').html($.mustache("stops", view)).trigger('create');
 
 
-        $('#page-stops .app li').click(function() {
+        $('#page-stops .app li.bus').click(function() {
           var json = JSON.parse($(this).attr('data-json'));
           $('#page-routes .app').html($.mustache("times", json));
           $.mobile.changePage( "#page-routes", { transition: "slide"} );
