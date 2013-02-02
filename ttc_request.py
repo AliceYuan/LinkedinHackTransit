@@ -5,6 +5,7 @@ import xml.etree.ElementTree as ET
 
 base_url = 'http://webservices.nextbus.com/service/publicXMLFeed'
 agencyTag = 'ttc'
+stops = []
 
 def requestNextBusData(commandName, routeTag):
 	request_url = base_url + '?' + 'command=' + commandName + '&' + 'a=' + agencyTag + '&' + 'r=' + routeTag
@@ -18,5 +19,8 @@ for route in rootRoutelist:
 	rootCurrentRoute = ET.fromstring(currentRoute)
 	for route in rootCurrentRoute.findall('route'):
 		for stop in route.findall('stop'):
-			with open('ttc_stops.json', 'a') as ttcStops:
-				ttcStops.write(json.dumps(stop.attrib) + "\n")
+			stops.append(stop.attrib)
+
+data = { "Stops" : stops }
+with open('ttc_stops.json', 'a') as ttcStops:
+	ttcStops.write(json.dumps(data, indent=2))
