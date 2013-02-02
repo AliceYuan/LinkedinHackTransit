@@ -64,7 +64,7 @@ html{
 					max-width: 100px;
 					width: 100px;
 					img{
-						height: 70%;
+						height: 80px;
 						margin: 0.5em auto;
 						float: left;
 					}
@@ -77,16 +77,16 @@ html{
 					}
 				}
 				.col-info{
-					float: left;
-					padding-right: 100px;
-					width: 80%;
+					white-space: normal;
+					margin-right: 100px;
+
 				}
 				.col-time{
 					position: absolute;
 					right: 40px;
 					display: inline-block;
 					.time-icon-outer{
-						background:  grey;
+						background:  gray;
 						height: 80px;
 						width:   80px;
 						@include border-radius(50%);
