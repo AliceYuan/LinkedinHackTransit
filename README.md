@@ -1,4 +1,4 @@
 LinkedinHackTransit
 ===================
 
-hi :)
+A mobile web app that displays upcoming transit departures near you.
