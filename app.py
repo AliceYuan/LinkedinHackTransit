@@ -8,7 +8,6 @@ from ttc_request import getPredictions
 from time import time
 
 cache = None
-last_cached = 0
 
 app = Flask(__name__, template_folder='public')
 app.wsgi_app = SharedDataMiddleware(app.wsgi_app, {
@@ -22,13 +21,17 @@ def root():
 @app.route('/get', methods = ['GET']) 
 def getStops():
     global cache
-    global last_cached
     lat = request.args["lat"] 
     lon = request.args["lon"]
-    if cache is None or time() - last_cached > 5*60:
+    if cache is None:
         cache = createResponse(lat,lon)
-        last_cached = time()
     return jsonify(cache)
+
+@app.route('/update')
+def update():
+    global cache
+    cache = None
+    return "updated cache"
 
 def createResponse(lat,lon):
     upcoming = getPredictions(float(lat), float(lon))
