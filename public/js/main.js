@@ -1,16 +1,69 @@
 $(document).bind('pageshow', function(e) {
   if(e.target.id == 'page-routes'){
     console.log(arguments);
-    console.log("routes page loaded"); 
+    console.log("routes page loaded");
   }
 });
-$(document).bind('pageinit', function() {
+
+$(document).on( "mobileinit", function() {
+    $.mobile.defaultPageTransition = "slide";
+});
+
+// $( document ).on( "pageinit", "[data-role='page']", function() {
+        // $.mobile.loadPage( "test.html" );
+        // $( document ).on( "swipeleft", page, function() {
+        //     $.mobile.changePage("test.html" );
+        // });
+
+
+
+//     // var page = "#" + $( this ).attr( "id" ),
+//     //     // Get the filename of the next page that we stored in the data-next attribute
+//     //     next = $( this ).jqmData( "next" ),
+//     //     // Get the filename of the previous page that we stored in the data-prev attribute
+//     //     prev = $( this ).jqmData( "prev" );
+//     // // Check if we did set the data-next attribute
+//     // if ( next ) {
+//     //     // Prefetch the next page
+//     //     $.mobile.loadPage( next + ".html" );
+//     //     // Navigate to next page on swipe left
+//     //     $( document ).on( "swipeleft", page, function() {
+//     //         $.mobile.changePage( next + ".html" );
+//     //     });
+//     //     // Navigate to next page when the "next" button is clicked
+//     //     $( ".control .next", page ).on( "click", function() {
+//     //         $.mobile.changePage( next + ".html" );
+//     //     });
+//     // }
+//     // // Disable the "next" button if there is no next page
+//     // else {
+//     //     $( ".control .next", page ).addClass( "ui-disabled" );
+//     // }
+//     // // The same for the previous page (we set data-dom-cache="true" so there is no need to prefetch)
+//     // if ( prev ) {
+//     //     $( document ).on( "swiperight", page, function() {
+//     //         $.mobile.changePage( prev + ".html", { reverse: true } );
+//     //     });
+//     //     $( ".control .prev", page ).on( "click", function() {
+//     //         $.mobile.changePage( prev + ".html", { reverse: true } );
+//     //     });
+//     // }
+//     // else {
+//     //     $( ".control .prev", page ).addClass( "ui-disabled" );
+//     // }
+// });
+
+
+
+
+
+$(document).bind('pageinit', "[data-role='page']", function() {
   function makemap(locs, lat, lon, w, h) {
     var str = '';
     for(var l in locs) {
       str += "&markers=color:" + locs[l].color + "%7Clabel:" + locs[l].letter + "%7C" + locs[l].lat + "," + locs[l].lon;
     }
-    return "http://maps.googleapis.com/maps/api/staticmap?sensor=false&center=" + lat + "," + lon + "&zoom=10&size=" + w + "x" + h + "&maptype=roadmap" + str;
+    return "http://maps.googleapis.com/maps/api/staticmap?sensor=false&center=" + lat + "," + lon + "&zoom=14&size=" + w + "x" + h + "&maptype=roadmap" + str;
   }
 
   //This function is called when scripts/helper/util.js is loaded.
@@ -82,4 +135,27 @@ $(document).bind('pageinit', function() {
 
   // One-shot position request.
   navigator.geolocation.getCurrentPosition(showMap);
+
+          // $.mobile.loadPage( "test.html" );
+      var page = "#" + $( this ).attr( "id" ),
+          prev = $( this ).jqmData( "prev" ),
+          next = $( this ).jqmData( "next" );
+          console.log(page);
+      if ( next ) {
+        // Prefetch the next page
+        $.mobile.loadPage( next + ".html" );
+        // Navigate to next page on swipe left
+        $( document ).on( "swipeleft", page, function() {
+            $.mobile.changePage( next + ".html" );
+        });
+      }
+      if ( prev ) {
+        console.log(prev);
+        $.mobile.loadPage( prev + ".html" );
+        $( document ).on( "swiperight", page, function() {
+            $.mobile.changePage( prev + ".html", { reverse: true } );
+        });
+      }
+
+
 });
