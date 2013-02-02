@@ -1,5 +1,5 @@
 import os
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, Response, url_for
 
 app = Flask(__name__, template_folder='public')
 
