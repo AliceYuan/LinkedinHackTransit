@@ -2,89 +2,29 @@
  * In this file you should write your main styles. (or centralize your imports)
  * Import this file using the following HTML or equivalent:
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
-/* line 17, ../../../../../../var/lib/gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font: inherit;
-  font-size: 100%;
-  vertical-align: baseline;
-}
-
-/* line 22, ../../../../../../var/lib/gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
-html {
-  line-height: 1;
-}
-
-/* line 24, ../../../../../../var/lib/gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
-ol, ul {
-  list-style: none;
-}
-
-/* line 26, ../../../../../../var/lib/gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-
-/* line 28, ../../../../../../var/lib/gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
-caption, th, td {
-  text-align: left;
-  font-weight: normal;
-  vertical-align: middle;
-}
-
-/* line 30, ../../../../../../var/lib/gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
-q, blockquote {
-  quotes: none;
-}
-/* line 103, ../../../../../../var/lib/gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
-q:before, q:after, blockquote:before, blockquote:after {
-  content: "";
-  content: none;
-}
-
-/* line 32, ../../../../../../var/lib/gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
-a img {
-  border: none;
-}
-
-/* line 116, ../../../../../../var/lib/gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
-article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
-  display: block;
-}
-
-/* line 11, ../sass/screen.scss */
+/* line 10, ../sass/screen.scss */
 body {
   background: grey;
 }
 
-/* line 15, ../sass/screen.scss */
+/* line 14, ../sass/screen.scss */
+li {
+  list-style: none;
+}
+
+/* line 18, ../sass/screen.scss */
 html {
   width: 100%;
   height: 100%;
 }
 
-/* line 20, ../sass/screen.scss */
+/* line 23, ../sass/screen.scss */
 #main-wrapper {
   height: 100%;
   width: 100%;
 }
 
-/* line 25, ../sass/screen.scss */
+/* line 28, ../sass/screen.scss */
 .main {
   background: white;
   height: 100%;
@@ -103,46 +43,30 @@ html {
   margin: 0 auto;
 }
 
-/* line 38, ../sass/screen.scss */
-header {
-  height: 10%;
-  background: green;
-}
-/* line 41, ../sass/screen.scss */
-header h1 {
-  color: white;
-  font-size: 2em;
-  font-family: Arial black, Arial black, Gadget, sans-serif;
-  padding: .5em;
-}
-
-/* line 49, ../sass/screen.scss */
-#content {
-  height: 75%;
-  width: 100%;
-}
-
-/* line 54, ../sass/screen.scss */
-#navigation {
-  background: purple;
-  height: 100px;
-  width: 100%;
-}
-/* line 59, ../sass/screen.scss */
-#navigation .nav-list li {
-  height: 100%;
-  width: 33.33%;
+/* line 42, ../sass/screen.scss */
+#page-main .ui-header .app-title {
+  display: inline-block;
   float: left;
+  margin: 1em auto;
+}
+/* line 47, ../sass/screen.scss */
+#page-main .ui-header .options {
+  width: 15%;
+  display: inline-block;
+}
+/* line 55, ../sass/screen.scss */
+#page-main .ui-content .transit-list .ui-li-divider {
+  height: 30px;
+}
+/* line 58, ../sass/screen.scss */
+#page-main .ui-content .transit-list li {
+  height: 120px;
 }
 
-/* line 67, ../sass/screen.scss */
-.transit-list {
-  overflow-y: hidden;
-}
 /* line 69, ../sass/screen.scss */
-.transit-list li {
-  height: 120px;
-  border-bottom: 1px solid grey;
+#navigation .nav-list li {
+  width: 25%;
+  float: left;
   text-align: center;
   font: 1.5em white;
 }

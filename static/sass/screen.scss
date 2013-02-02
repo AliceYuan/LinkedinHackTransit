@@ -3,13 +3,16 @@
  * Import this file using the following HTML or equivalent:
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
 
-@import "compass/reset";
 @import "compass/css3/border-radius";
 @import "compass/css3/box-shadow";
 
 
 body{
 	background: grey;
+}
+
+li{
+	list-style: none;
 }
 
 html{
@@ -34,42 +37,40 @@ html{
 	@include box-shadow(rgba(50, 50, 50, 0.75) 0px 0px 50px );
 	margin: 0 auto;
 }
-
-header{
-	height: 10%;
-	background: green;
-	h1{
-		color: white;
-		font-size: 2em;
-		font-family: Arial Black, Arial Black, Gadget, sans-serif;
-		padding: .5em;
-	}
-}
-
-#content{
-	height: 	75%;
-	width:      100%;
-}
-
-#navigation{
-	background: purple;
-	height:     100px;
-	width: 		100%;
-	.nav-list{
-		li{
-			height: 100%;
-			width: 33.33%;
+#page-main{
+	.ui-header{
+		.app-title{
+			display: inline-block;
 			float: left;
+			margin: 1em auto;
+		}
+		.options{
+			width: 15%;
+			display: inline-block;
+		}
+
+	}
+	.ui-content{
+		.transit-list{
+			.ui-li-divider	{
+				height: 30px;
+			}
+			li{
+				height: 120px;
+			}
 		}
 	}
 }
 
-.transit-list{
-	overflow-y: hidden;
-	li{
-		height: 120px;
-		border-bottom: 1px solid grey;
-		text-align: center;
-		font:  1.5em white;
+
+#navigation{
+
+	.nav-list{
+		li{
+			width: 25%;
+			float: left;
+			text-align: center;
+			font:  1.5em white;
+		}
 	}
 }

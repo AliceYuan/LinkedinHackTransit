@@ -15,7 +15,7 @@
 		<div id="app"></div>
 		<script type="template/mustache" id="stops-tpl">
 			{{#stops}}
-			<ul>Stop at: {{lat}},{{lon}}
+			<ul>Stop at: {{lat}},{{lon}}; <img src="{{map}}"/>
 			{{#routes}}
 			<li>Route of type {{type}} with name {{name}} comes at {{#times}}{{.}},{{/times}}</li>
 			{{/routes}}
