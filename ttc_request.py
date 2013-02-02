@@ -2,16 +2,16 @@
 
 import requests
 
-request = 'http://webservices.nextbus.com/service/publicXMLFeed'
+base_url = 'http://webservices.nextbus.com/service/publicXMLFeed'
 
 commandName = 'routeConfig'
 agencyTag = 'ttc'
 route = '501'
 
-def getSchedule():
-	url = request + '?' + 'command=' + '&' + 'a=' + agencyTag + '&' + 'r=' + route
-	result = requests.get(url)
+def getRoutes():
+	request_url = base_url + '?' + 'command=' + commandName + '&' + 'a=' + agencyTag + '&' + 'r=' + route
+	result = requests.get(request_url).text
 	return result
 
-schedule = getSchedule()
-print schedule
+routes = getRoutes()
+print routes
