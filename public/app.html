@@ -70,18 +70,24 @@
             </li>
             {{#routes}}
             <li data-theme="c">
+                <a href="#page-routes" data-transition="slide">
                 <div class="col-icon">
                     <img src="images/bus.png" />
                 </div>
-                <a href="#page-routes" data-transition="slide">
-            Route of type {{type}} with name {{name}} comes at {{#times}}{{.}},{{/times}}
-                </a>
+                <div class="col-info">
+                       Route of type <span class="transit-type">{{type}} </span> with <span class="transit-name"> {{name}} </span> comes at {{#times}}{{.}},{{/times}}
+                </div>
                 <div class="col-time">
                     <div class="time-icon-outer">
                         <div class="time-icon-inner">
+                            <p class="time-text">
+                                <span class="time"> 10</span>
+                                <!-- <span class="time-metric">mins</span> --!>
+                            </p>
                         </div>
                     </div>
                 </div>
+                </a>
             </li>
             {{/routes}}                    
             {{/stops}}

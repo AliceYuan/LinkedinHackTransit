@@ -64,18 +64,63 @@ html {
   vertical-align: middle;
 }
 /* line 62, ../sass/screen.scss */
-#page-stops .ui-content .transit-list li img {
+#page-stops .ui-content .transit-list li .col-icon {
+  float: left;
+  max-width: 100px;
+  width: 100px;
+}
+/* line 66, ../sass/screen.scss */
+#page-stops .ui-content .transit-list li .col-icon img {
   height: 70%;
-  margin: 1em auto;
+  margin: 0.5em auto;
   float: left;
 }
-
-/* line 71, ../sass/screen.scss */
-img {
-  height: 80%;
+/* line 72, ../sass/screen.scss */
+#page-stops .ui-content .transit-list li .col-info {
+  float: left;
+}
+/* line 75, ../sass/screen.scss */
+#page-stops .ui-content .transit-list li .col-time {
+  float: right;
+  display: inline-block;
+}
+/* line 78, ../sass/screen.scss */
+#page-stops .ui-content .transit-list li .col-time .time-icon-outer {
+  background: grey;
+  height: 80px;
+  width: 80px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  border-radius: 50%;
+}
+/* line 84, ../sass/screen.scss */
+#page-stops .ui-content .transit-list li .col-time .time-icon-inner {
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  border-radius: 50%;
+  background: orange;
+  position: relative;
+  left: 10px;
+  top: 10px;
+  height: 60px;
+  width: 60px;
+}
+/* line 92, ../sass/screen.scss */
+#page-stops .ui-content .transit-list li .col-time .time-icon-inner .time-text {
+  text-align: center;
+  color: white;
+}
+/* line 95, ../sass/screen.scss */
+#page-stops .ui-content .transit-list li .col-time .time-icon-inner .time-text .time {
+  font-size: 4em;
+  display: block;
 }
 
-/* line 79, ../sass/screen.scss */
+/* line 114, ../sass/screen.scss */
 #navigation .nav-list li {
   width: 25%;
   float: left;

@@ -59,17 +59,52 @@ html{
 			li{
 				height: 120px;
 				vertical-align: middle;
-				img{
-					height: 70%;
-					margin: 1em auto;
+				.col-icon{
 					float: left;
+					max-width: 100px;
+					width: 100px;
+					img{
+						height: 70%;
+						margin: 0.5em auto;
+						float: left;
+					}
+				}
+				.col-info{
+					float: left;
+				}
+				.col-time{
+					float: right;
+					display: inline-block;
+					.time-icon-outer{
+						background:  grey;
+						height: 80px;
+						width:   80px;
+						@include border-radius(50%);
+					}
+					.time-icon-inner{
+						@include border-radius(50%);
+						background:  orange;
+						position: relative;
+						left: 10px;
+						top:  10px;
+						height: 60px;
+						width: 60px;
+						.time-text{
+							text-align: center;
+							color: white;
+							.time{
+								font-size: 4em;
+								display: block;
+							}
+							.time-metric{
+
+							}
+						}
+					}
 				}
 			}
 		}
 	}
-}
-img{
-	height: 80%;
 }
 
 
