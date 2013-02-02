@@ -25,7 +25,7 @@ require(["helper/util"], function(util) {
                 return util.makemap(lat, lon, w, h);}})(stop.lat, stop.lon, w, h);
             view.stops.push(stop);
           }
-          $('#app').html($.mustache("stops", view));
+          $('#app').html($.mustache("stops", view)).trigger('create');
         },
         error: function(){
           console.log("ERROR");
