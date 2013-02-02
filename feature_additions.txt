@@ -1,1 +1,1 @@
-- add timebombs to busses
+* add timebombs with kittens to buses
