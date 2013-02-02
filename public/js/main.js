@@ -103,9 +103,12 @@ $(document).on('pageinit', "[data-role='page']", function() {
           for(var r in stop.routes) {
             var new_route = {};
             new_route = stop.routes[r];
-            stop.routes[r].json = JSON.stringify(stop);
-            stop.routes[r].json = JSON.stringify(stop);
+            console.log(new_route.times);
+            new_route.first_time = Math.min.apply(null, new_route.times);
+            new_route.json = JSON.stringify(stop);
+            new_routes.push(new_route);
           }
+          stop.routes = new_routes;
           view.stops.push(stop);
         }
         view.map = makemap(locs, lat, lon, w, h);
