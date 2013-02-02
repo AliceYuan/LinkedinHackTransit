@@ -109,6 +109,13 @@ $(document).on('pageinit', "[data-role='page']", function() {
           view.stops.push(stop);
         }
         view.map = makemap(locs, lat, lon, w, h);
+
+        if (page == "page-map"){
+          console.log("TEST");
+          $('#page-map .app').html($.mustache("maps", view)).trigger('create');
+        }
+
+
         $('#page-stops .app').html($.mustache("stops", view)).trigger('create');
 
 
@@ -132,6 +139,8 @@ $(document).on('pageinit', "[data-role='page']", function() {
 
   // One-shot position request.
   navigator.geolocation.getCurrentPosition(showMap);
+
+
 
 
 
