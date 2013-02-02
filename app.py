@@ -14,10 +14,11 @@ def root():
 
 @app.route('/get', methods = ['GET']) 
 def getStops():
-    lat = request.args["lat"] 
-    lon = request.args["lon"]
-    resp = createResponse(lat,lon)
-    return jsonify(resp)
+    #lat = request.args["lat"] 
+    #lon = request.args["lon"]
+    #resp = createResponse(lat,lon)
+    #return jsonify(resp)
+    return send_from_directory('public', 'data.json')
 
 def createResponse(lat,lon):
     times = createTimes([100,2900,3000])
