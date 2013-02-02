@@ -38,7 +38,7 @@ $(document).on('pageinit', "[data-role='page']", function() {
 
   // $(document).one("swipeleft", page, prevf);
   // console.log(prev);
-  $(document).one("swiperight", page, nextf);
+  // $(document).one("swiperight", page, nextf);
 
   function makemap(locs, lat, lon, w, h) {
     var str = '';
