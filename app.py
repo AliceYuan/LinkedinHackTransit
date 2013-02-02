@@ -4,7 +4,7 @@ from werkzeug import SharedDataMiddleware
 
 app = Flask(__name__, template_folder='public')
 app.wsgi_app = SharedDataMiddleware(app.wsgi_app, {
-  '/public': os.path.join(os.path.dirname(__file__), 'public')
+  '/': os.path.join(os.path.dirname(__file__), 'public')
 })
 
 @app.route('/')
