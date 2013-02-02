@@ -58,8 +58,7 @@
         <ul data-role="listview" data-divider-theme="b" data-inset="true" class="transit-list">
             {{#stops}}
             <li data-role="list-divider" role="heading" class="stop" >
-                <span style="color:{{color_fg}}; text-shadow:none; background-color:{{color_bg}}; border:2px solid white;">{{letter}}</span> Stop {{name}} at: {{lat}},{{lon}} 
-
+                <span style="color:{{color_fg}}; text-shadow:none; background-color:{{color_bg}}; border:2px solid white;">{{letter}}</span> {{name}}
             </li>
             {{#routes}}
             <li data-theme="c" class="bus" data-json="{{json}}">
@@ -72,14 +71,14 @@
                     <div class="time-icon-outer">
                         <div class="time-icon-inner">
                             <p class="time-text">
-                                <span class="time">50 </span>
+                                <span class="time">{{first_time}} </span>
                                 <!-- <span class="time-metric">mins</span> --!>
                             </p>
                         </div>
                     </div>
                 </div>
                 <div class="col-info">
-                       Route of type <span class="transit-type">{{type}} </span> with <span class="transit-name"> {{name}} </span> comes at {{#times}}{{.}},{{/times}}
+                       <span class="transit-type">{{type}}</span>: <span class="transit-name"> {{direction}} </span>
                 </div>
                 </a>
             </li>
@@ -92,7 +91,7 @@
         <ul data-role="listview" data-divider-theme="b" data-inset="true" class="transit-list">
             {{#routes}}
             <li data-role="list-divider" role="heading" class="stop">
-               Stop {{name}} at: {{lat}},{{lon}} 
+               {{name}}
             </li>
             {{#times}}
             <li data-theme="c">
@@ -105,7 +104,7 @@
                     <div class="time-icon-outer">
                         <div class="time-icon-inner">
                             <p class="time-text">
-                                <span class="time">50 </span>
+                                <span class="time">{{.}} </span>
                                 <!-- <span class="time-metric">mins</span> --!>
                             </p>
                         </div>
@@ -113,7 +112,6 @@
                 </div>
                 <div class="col-info">
                        Route of type <span class="transit-type">{{type}} </span> with <span class="transit-name"> {{name}} </span> 
-                       comes at {{.}}
                 </div>
                 </a>
             </li>
