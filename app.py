@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import os
 from flask import Flask, request, render_template, Response, url_for, jsonify, send_from_directory
 from werkzeug import SharedDataMiddleware
