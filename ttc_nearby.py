@@ -27,4 +27,3 @@ def distance(origin, destination):
     c = 2 * math.atan2(math.sqrt(a), math.sqrt(1-a))
     d = radius * c
     return d
-getNearbyStops(1,1)
