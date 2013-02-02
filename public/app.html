@@ -19,7 +19,7 @@
     </head>
     <body>
         <!-- Home -->
-        <div data-role="page" id="page-main">
+        <div data-role="page" id="page-stops">
             <div data-theme="a" data-role="header">
 
                 <h3 class="app-title">
@@ -36,26 +36,8 @@
                     </select>
                 </div> 
             </div>
-            <div data-role="content" id="app">
+            <div data-role="content" class="app">
             </div>
-            <script type="template/mustache" id="stops-tpl">
-
-            <ul data-role="listview" data-divider-theme="b" data-inset="true" class="transit-list">
-
-                {{#stops}}
-                <li data-role="list-divider" role="heading" class="stop">
-                   Stop at: {{lat}},{{lon}} 
-                </li>
-                {{#routes}}
-                <li data-theme="c">
-                    <a href="#" data-transition="slide">
-                Route of type {{type}} with name {{name}} comes at {{#times}}{{.}},{{/times}}
-                    </a>
-                </li>
-                {{/routes}}                    
-                {{/stops}}
-            </ul>
-            </script>
 
             <div data-theme="a" data-role="footer" data-position="fixed" id="navigation">
                 <ul class="nav-list" data-role="listview" data-inset="true" >
@@ -73,5 +55,30 @@
                 <ul>
             </div>
         </div>
+
+        <!-- Routes page -->
+        <div data-role="page" id="page-routes">
+            <div data-role="content" class="app">
+            </div>
+        </div>
+
+        <script type="template/mustache" id="stops-tpl">
+
+        <ul data-role="listview" data-divider-theme="b" data-inset="true" class="transit-list">
+
+            {{#stops}}
+            <li data-role="list-divider" role="heading" class="stop">
+               Stop at: {{lat}},{{lon}} 
+            </li>
+            {{#routes}}
+            <li data-theme="c">
+                <a href="#page-routes" data-transition="slide">
+            Route of type {{type}} with name {{name}} comes at {{#times}}{{.}},{{/times}}
+                </a>
+            </li>
+            {{/routes}}                    
+            {{/stops}}
+        </ul>
+        </script>
     </body>
 </html>
