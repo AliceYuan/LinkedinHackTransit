@@ -12,7 +12,7 @@ require(["helper/util"], function(util) {
         cache: false,
         data: {lat: position.coords.latitude, lon:position.coords.longitude },
         success: function(data){
-          $('#app').html($.mustache("stops", data));
+          $('#app').html($.mustache("stops", data)).trigger('create');
         },
         error: function(){
         }

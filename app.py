@@ -9,7 +9,7 @@ app.wsgi_app = SharedDataMiddleware(app.wsgi_app, {
 
 @app.route('/')
 def root():
-    return send_from_directory('public', 'test.html')
+    return send_from_directory('public', 'app.html')
 
 @app.route('/getStops', methods = ['GET']) 
 def getStops():
