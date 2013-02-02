@@ -6,8 +6,19 @@ require(["helper/util"], function(util) {
     console.log(util.test);
 
     function showMap(position) {
-      $.get('data.json', {lat: position.coords.latitude, lon:position.coords.longitude }, function(){
-        console.log('got data');
+      $.ajax({
+        method: "GET",
+        url: 'data.json',
+        cache: false,
+        data: {lat: position.coords.latitude, lon:position.coords.longitude },
+        success: function(){
+          console.log("got data");
+          console.log(arguments);
+        },
+        error: function(){
+          console.log("got err");
+          console.log(arguments);
+        }
       });
 
       var location = {lat: position.coords.latitude, lon:position.coords.longitude};
