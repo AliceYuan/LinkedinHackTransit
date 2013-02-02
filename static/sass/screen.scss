@@ -37,6 +37,7 @@ html{
 	@include box-shadow(rgba(50, 50, 50, 0.75) 0px 0px 50px );
 	margin: 0 auto;
 }
+
 #page-main{
 	.ui-header{
 		.app-title{
@@ -60,6 +61,9 @@ html{
 			}
 		}
 	}
+}
+img{
+	height: 80%;
 }
 
 

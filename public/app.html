@@ -26,9 +26,6 @@
                     Transit
                 </h3>
                <div data-role="fieldcontain" class="options">
-                 <!--    <label for="selectmenu1">
-                        Choose:
-                    </label> -->
                     <select name="" data-mini="true">
                         <option value="option1">
                             Option 1
@@ -48,6 +45,7 @@
                 </li>
                 {{#routes}}
                 <li data-theme="c">
+                    <img src="images/bus.png" />
                     <a href="#" data-transition="slide">
                 Route of type {{type}} with name {{name}} comes at {{#times}}{{.}},{{/times}}
                     </a>
@@ -60,7 +58,7 @@
             <div data-theme="a" data-role="footer" data-position="fixed" id="navigation">
                 <ul class="nav-list" data-role="listview" data-inset="true" >
                     <li data-theme="c">
-                        <a href="#"
+                        <a href="#">
                             near me
                         </a>
                     </li>
