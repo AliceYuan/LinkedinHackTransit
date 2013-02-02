@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <title>
+        </title>
+        <link href="stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" />
+
+        <link rel="stylesheet" href="stylesheets/jquery.mobile-1.2.0.css" />
+        <script src="js/jquery-1.8.3.js"></script>
+        <script src="js/jquery.mobile-1.2.0.js"></script>
+        <script src="js/mustache.js"></script>
+        <script src="js/mustache_helper.js"></script>
+        <script src="js/main.js"></script>
+        </script>
+    </head>
+    <body>
+
+        <!-- Home -->
+        <div data-role="page" id="page-stops">
+            <div data-theme="a" data-role="header">
+
+                <h3 class="app-title">
+                    Transit
+                </h3>
+               <div data-role="fieldcontain" class="options">
+                    <select name="" data-mini="true">
+                        <option value="option1">
+                            Option 1
+                        </option>
+                    </select>
+                </div> 
+            </div>
+            <div data-role="content" class="app">
+            </div>
+<!--             <div data-theme="a" data-role="footer" data-position="fixed" id="navigation">
+                <ul class="nav-list" data-role="listview" data-inset="true" >
+                    <li data-theme="c">
+                        <a href="#">
+                            near me
+                        </a>
+                    </li>
+                    <li>
+                        fav
+                    </li>
+                    <li>
+                        test
+                    </li>
+                <ul>
+            </div>
+ -->        </div>
+
+        <!-- Routes page -->
+        <div id="page-routes">
+            <div data-role="content" class="app">
+                test!
+            </div>
+        </div>
+
+        <script type="template/mustache" id="stops-tpl">
+
+        <img src="{{map}}"/>
+        <ul data-role="listview" data-divider-theme="b" data-inset="true" class="transit-list">
+            {{#stops}}
+            <li data-role="list-divider" role="heading" class="stop" >
+               <span style="color:{{color_fg}}; text-shadow:none; background-color:{{color_bg}}; border:2px solid white;">{{letter}}</span> Stop {{name}} at: {{lat}},{{lon}} 
+            </li>
+            {{#routes}}
+            <li data-theme="c" class="bus" data-json="{{json}}">
+                <a href="#">
+                <div class="col-icon">
+                    <img src="images/bus.png" />
+                    <span class="transit-type"></span>
+                </div>
+                <div class="col-time">
+                    <div class="time-icon-outer">
+                        <div class="time-icon-inner">
+                            <p class="time-text">
+                                <span class="time">50 </span>
+                                <!-- <span class="time-metric">mins</span> --!>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-info">
+                       Route of type <span class="transit-type">{{type}} </span> with <span class="transit-name"> {{name}} </span> comes at {{#times}}{{.}},{{/times}}
+                </div>
+                </a>
+            </li>
+            {{/routes}}
+            {{/stops}}
+        </ul>
+        </script>
+        <script type="template/mustache" id="times-tpl">
+
+        <ul data-role="listview" data-divider-theme="b" data-inset="true" class="transit-list">
+            {{#routes}}
+            <li data-role="list-divider" role="heading" class="stop">
+               Stop {{name}} at: {{lat}},{{lon}} 
+            </li>
+            {{#times}}
+            <li data-theme="c">
+                <a href="#">
+                <div class="col-icon">
+                    <img src="images/bus.png" />
+                    <span class="transit-type"> TTC</span>
+                </div>
+                <div class="col-time">
+                    <div class="time-icon-outer">
+                        <div class="time-icon-inner">
+                            <p class="time-text">
+                                <span class="time">50 </span>
+                                <!-- <span class="time-metric">mins</span> --!>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-info">
+                       Route of type <span class="transit-type">{{type}} </span> with <span class="transit-name"> {{name}} </span> 
+                       comes at {{.}}
+                </div>
+                </a>
+            </li>
+            {{/times}}    
+            {{/routes}}    
+        </script>
+    </body>
+</html>
