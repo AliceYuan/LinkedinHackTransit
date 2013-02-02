@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="initial-scale=0.75, user-scalable=no" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <title>
+            Ride to the Future
+        </title>
+        <link rel="icon" type="image/png" href="images/bus.png" />
+        <link rel="apple-touch-icon-precomposed" type="image/png" href="images/bus.png" />
+        <link href="stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" />
+
+        <link rel="stylesheet" href="stylesheets/jquery.mobile-1.2.0.css" />
+        <link rel="stylesheet" href="fonts/limelight/stylesheet.css" type="text/css" charset="utf-8">
+ 
+        <script src="js/jquery-1.8.3.js"></script>
+        <script src="js/jquery.mobile-1.2.0.js"></script>
+        <script src="js/mustache.js"></script>
+        <script src="js/mustache_helper.js"></script>
+        <script src="js/main.js"></script>
+        </script>
+    </head>
+    <body>
+        <!-- Home -->
+        <!-- Routes page -->
+        <div data-role="page" id="page-routes">
+            <div data-role="content" class="app">
+                hello
+            </div>
+        </div>
+
+        <script type="template/mustache" id="times-tpl">
+
+        <ul data-role="listview" data-divider-theme="b" data-inset="true" class="transit-list">
+            {{#routes}}
+            <li data-role="list-divider" role="heading" class="stop">
+               {{name}}
+            </li>
+            {{#times}}
+            <li data-theme="c">
+                <a href="#">
+                <div class="col-icon">
+                    <img src="images/bus.png" />
+                    <span class="transit-type"> TTC</span>
+                </div>
+                <div class="col-time">
+                    <div class="time-icon-outer">
+                        <div class="time-icon-inner">
+                            <p class="time-text">
+                                <span class="time">{{.}} </span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-info">
+                       Route of type <span class="transit-type">{{type}} </span> with <span class="transit-name"> {{name}} </span> 
+                </div>
+                </a>
+            </li>
+            {{/times}}    
+            {{/routes}}    
+        </script>
+    </body>
+</html>
