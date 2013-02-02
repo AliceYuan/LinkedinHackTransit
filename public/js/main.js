@@ -45,7 +45,7 @@ $(document).on('pageinit', "[data-role='page']", function() {
     for(var l in locs) {
       str += "&markers=color:" + locs[l].color + "%7Clabel:" + locs[l].letter + "%7C" + locs[l].lat + "," + locs[l].lon;
     }
-    return "http://maps.googleapis.com/maps/api/staticmap?sensor=false&center=" + lat + "," + lon + "&zoom=14&size=" + w + "x" + h + "&maptype=roadmap" + str;
+    return "http://maps.googleapis.com/maps/api/staticmap?sensor=false&center=" + lat + "," + lon + "&zoom=16&size=" + w + "x" + h + "&maptype=roadmap" + str;
   }
   if (page == "page-index"){
     
@@ -62,7 +62,7 @@ $(document).on('pageinit', "[data-role='page']", function() {
   }
 
   function rndColor() {
-    var col1 = [Math.min(Math.round(Math.random() * 255) + 50, 255), Math.min(Math.round(Math.random() * 255) + 50, 255), Math.min(Math.round(Math.random() * 255) + 50, 255)];
+    var col1 = [Math.min(Math.round(Math.random() * 255) + 50, 255), Math.min(Math.round(Math.random() * 255) + 50, 255), Math.max(Math.round(Math.random() * 255) - 100, 0)];
     col1 = d2h(col1[0]) + '' + d2h(col1[1]) + '' + d2h(col1[2]);
     return col1;
   }
