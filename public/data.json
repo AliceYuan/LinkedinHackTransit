@@ -2,29 +2,32 @@
   "stops": [{
     "lat": 43.67391,
     "lon": -79.28172,
+    "name": "stop1",
     "routes": [{
       "type": "TTC",
-      "name": "stop1",
+      "name": "route 1",
       "times": [100, 2900, 3000]
     }]
   }, {
     "lat": 43.60382,
     "lon": -79.49303,
+    "name": "stop2",
     "routes": [{
       "type": "TTC",
-      "name": "stop2 route 1",
+      "name": "route 2",
       "times": [130, 2601, 2620]
     }, {
       "type": "TTC",
-      "name": "stop2 route 2",
+      "name": "route 3",
       "times": [120, 2901, 3020]
     }]
   }, {
     "lat": 43.6414,
     "lon": -79.4324199,
+    "name": "stop3",
     "routes": [{
       "type": "GO",
-      "name": "stop3",
+      "name": "route 4",
       "times": [140, 2930, 3330]
     }]
   }]

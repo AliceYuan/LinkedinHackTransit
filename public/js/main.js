@@ -1,7 +1,6 @@
 $(document).bind('pageshow', function(e) {
+  $('#'+e.target.id).trigger('create');
   if(e.target.id == 'page-routes'){
-    console.log(arguments);
-    console.log("routes page loaded"); 
   }
 });
 $(document).bind('pageinit', function() {
@@ -59,15 +58,23 @@ $(document).bind('pageinit', function() {
             color: "0x" + colors,
             letter: String.fromCharCode(65 + Number(d))
           });
+          var new_routes = [];
+          for(var r in stop.routes){
+            var new_route = {};
+            new_route = stop.routes[r]
+            stop.routes[r].json = JSON.stringify(stop);
+            stop.routes[r].json = JSON.stringify(stop);
+          }
           view.stops.push(stop);
         }
         view.map = makemap(locs, lat, lon, w, h);
         $('#page-stops .app').html($.mustache("stops", view)).trigger('create');
 
 
-        $('#page-stops .app li').click(function() {
-          $('#page-routes .app').html($.mustache("times", view));
-          $.mobile.changePage( $("#page-routes"), { transition: "slide"} );
+        $('#page-stops .app li.bus').click(function() {
+          var json = JSON.parse($(this).attr('data-json'));
+          $('#page-routes .app').html($.mustache("times", json));
+          $.mobile.changePage( "#page-routes", { transition: "slide"} );
         });
       },
       error: function() {
