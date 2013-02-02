@@ -4,11 +4,11 @@ import json, math, requests
 import xml.etree.ElementTree as ET
 
 def requestNextBusData(commandName, params):
-	base_url = 'http://webservices.nextbus.com/service/publicXMLFeed'
-	agencyTag = 'ttc'
-	request_url = base_url + '?' + 'command=' + commandName + '&' + 'a=' + agencyTag + '&' + params
-	result = requests.get(request_url).text
-	return result
+    base_url = 'http://webservices.nextbus.com/service/publicXMLFeed'
+    agencyTag = 'ttc'
+    request_url = base_url + '?' + 'command=' + commandName + '&' + 'a=' + agencyTag + '&' + params
+    result = requests.get(request_url).text
+    return result
 
 def getNearbyStops(latitude, longitude):
     stops = []
@@ -20,8 +20,8 @@ def getNearbyStops(latitude, longitude):
         distances.append(distance([latitude, longitude], [float(stop[2]), float(stop[3])]))
     stops = [stops for (distances, stops) in sorted(zip(distances, stops))]
     data = { "Stops" : stops }
-	with open('data/ttc_sorted_stops.json', 'w') as ttcStops:
-		ttcStops.write(json.dumps(data, indent=2))
+    with open('data/ttc_sorted_stops.json', 'w') as ttcStops:
+        ttcStops.write(json.dumps(data, indent=2))
 
 def distance(origin, destination):
     lat1, lon1 = origin
@@ -37,54 +37,54 @@ def distance(origin, destination):
     return d
 
 def getRoutes():
-	routes = requestNextBusData('routeList', 'r=')
-	rootRoutelist = ET.fromstring(routes)
-	routeList = []
-	for route in rootRoutelist:
-		routeList.append(route.attrib)
-	routeJSON = { "Routes" : routeList }
-	with open('data/ttc_routes.json', 'w') as ttcRoutes:
-		ttcRoutes.write(json.dumps(routeJSON, indent=2))
+    routes = requestNextBusData('routeList', 'r=')
+    rootRoutelist = ET.fromstring(routes)
+    routeList = []
+    for route in rootRoutelist:
+        routeList.append(route.attrib)
+    routeJSON = { "Routes" : routeList }
+    with open('data/ttc_routes.json', 'w') as ttcRoutes:
+        ttcRoutes.write(json.dumps(routeJSON, indent=2))
 
 def getStops():
-	stopList = []
-	with open('data/ttc_routes.json') as ttcRoutes:
-		routeList = json.load(ttcRoutes)["Routes"]
-	for route in routeList:
-		currentRoute = requestNextBusData('routeConfig', 'r='+route["tag"]+'&terse')
-		rootCurrentRoute = ET.fromstring(currentRoute)
-		for route in rootCurrentRoute.findall('route'):
-			for stop in route.findall('stop'):
-				stopList.append((stop.attrib["tag"], route.attrib["tag"], stop.attrib["lat"], stop.attrib["lon"]))
-	stopJSON = { "Stops" : stopList }
-	with open('data/ttc_stops.json', 'w') as ttcStops:
-		ttcStops.write(json.dumps(stopJSON, indent=2))
+    stopList = []
+    with open('data/ttc_routes.json') as ttcRoutes:
+        routeList = json.load(ttcRoutes)["Routes"]
+    for route in routeList:
+        currentRoute = requestNextBusData('routeConfig', 'r='+route["tag"]+'&terse')
+        rootCurrentRoute = ET.fromstring(currentRoute)
+        for route in rootCurrentRoute.findall('route'):
+            for stop in route.findall('stop'):
+                stopList.append((stop.attrib["tag"], route.attrib["tag"], stop.attrib["lat"], stop.attrib["lon"]))
+    stopJSON = { "Stops" : stopList }
+    with open('data/ttc_stops.json', 'w') as ttcStops:
+        ttcStops.write(json.dumps(stopJSON, indent=2))
 
 # def getPredictions(latitude, longitude):
-# 	predictionList = []
-# 	nearbyStops = json.loads(getNearbyStops(latitude, longitude))["Stops"]
-# 	# print json.dumps(nearbyStops, indent=4)
-# 	for stop in nearbyStops:
-# 		dictionary = {}
-# 		if 'stopId' in stop:
-# 			predictions = requestNextBusData('predictions', 'stopId='+stop["stopId"])
-# 			print predictions
-# 			rootPredictions = ET.fromstring(predictions)
-# 			for predictions in rootPredictions.findall('predictions'):
-# 				if len(predictions.findall('direction')) > 0:
-# 					for direction in predictions.findall('direction'):
-# 						for prediction in direction.findall('prediction'):
-# 							dictionary.update({'route': predictions.attrib["routeTag"], 'stop': predictions.attrib["stopTitle"], 'minutes': prediction.attrib["minutes"],'lat':stop["lat"],'lon':stop["lon"]})
-# 				else:
-# 					dictionary.update(predictions.attrib)
-# 		departures.append(dictionary)
-# 	data = { "Departures" : departures }
-# 	return data
+#   predictionList = []
+#   nearbyStops = json.loads(getNearbyStops(latitude, longitude))["Stops"]
+#   # print json.dumps(nearbyStops, indent=4)
+#   for stop in nearbyStops:
+#       dictionary = {}
+#       if 'stopId' in stop:
+#           predictions = requestNextBusData('predictions', 'stopId='+stop["stopId"])
+#           print predictions
+#           rootPredictions = ET.fromstring(predictions)
+#           for predictions in rootPredictions.findall('predictions'):
+#               if len(predictions.findall('direction')) > 0:
+#                   for direction in predictions.findall('direction'):
+#                       for prediction in direction.findall('prediction'):
+#                           dictionary.update({'route': predictions.attrib["routeTag"], 'stop': predictions.attrib["stopTitle"], 'minutes': prediction.attrib["minutes"],'lat':stop["lat"],'lon':stop["lon"]})
+#               else:
+#                   dictionary.update(predictions.attrib)
+#       departures.append(dictionary)
+#   data = { "Departures" : departures }
+#   return data
 
 if __name__=="__main__":
-	getNearbyStops(43.7739, -79.41427)
-	# getRoutes()
-	# getStops()
-	# data = { "Stops" : stops }
-	# with open('ttc_stops.json', 'a') as ttcStops:
-	# 	ttcStops.write(json.dumps(data, indent=2))
+    getNearbyStops(43.7739, -79.41427)
+    # getRoutes()
+    # getStops()
+    # data = { "Stops" : stops }
+    # with open('ttc_stops.json', 'a') as ttcStops:
+    #   ttcStops.write(json.dumps(data, indent=2))

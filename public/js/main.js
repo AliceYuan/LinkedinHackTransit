@@ -1,64 +1,45 @@
 $(document).bind('pageshow', function(e) {
-  $('#'+e.target.id).trigger('create');
-  if(e.target.id == 'page-routes'){
+  $('#' + e.target.id).trigger('create');
+  if(e.target.id == 'page-routes') {
     console.log(arguments);
     console.log("routes page loaded");
   }
 });
 
-$(document).on( "mobileinit", function() {
-    $.mobile.defaultPageTransition = "slide";
+$(document).on("mobileinit", function() {
+  $.mobile.defaultPageTransition = "slide";
 });
 
-// $( document ).on( "pageinit", "[data-role='page']", function() {
-        // $.mobile.loadPage( "test.html" );
-        // $( document ).on( "swipeleft", page, function() {
-        //     $.mobile.changePage("test.html" );
-        // });
+function nextf() {
+  console.log(next);
+  if(next) {
+    $.mobile.changePage(next + ".html");
+  }
+}
+
+// function prevf() {
+//   console.log(prev);
+//   if(prev) {
+//     $.mobile.changePage(prev + ".html", {
+//       reverse: true
+//     });
+//   }
+// }
 
 
+var prev, next;
 
-//     // var page = "#" + $( this ).attr( "id" ),
-//     //     // Get the filename of the next page that we stored in the data-next attribute
-//     //     next = $( this ).jqmData( "next" ),
-//     //     // Get the filename of the previous page that we stored in the data-prev attribute
-//     //     prev = $( this ).jqmData( "prev" );
-//     // // Check if we did set the data-next attribute
-//     // if ( next ) {
-//     //     // Prefetch the next page
-//     //     $.mobile.loadPage( next + ".html" );
-//     //     // Navigate to next page on swipe left
-//     //     $( document ).on( "swipeleft", page, function() {
-//     //         $.mobile.changePage( next + ".html" );
-//     //     });
-//     //     // Navigate to next page when the "next" button is clicked
-//     //     $( ".control .next", page ).on( "click", function() {
-//     //         $.mobile.changePage( next + ".html" );
-//     //     });
-//     // }
-//     // // Disable the "next" button if there is no next page
-//     // else {
-//     //     $( ".control .next", page ).addClass( "ui-disabled" );
-//     // }
-//     // // The same for the previous page (we set data-dom-cache="true" so there is no need to prefetch)
-//     // if ( prev ) {
-//     //     $( document ).on( "swiperight", page, function() {
-//     //         $.mobile.changePage( prev + ".html", { reverse: true } );
-//     //     });
-//     //     $( ".control .prev", page ).on( "click", function() {
-//     //         $.mobile.changePage( prev + ".html", { reverse: true } );
-//     //     });
-//     // }
-//     // else {
-//     //     $( ".control .prev", page ).addClass( "ui-disabled" );
-//     // }
-// });
+$(document).on('pageinit', "[data-role='page']", function() {
 
+  var page = "#" + $(this).attr("id");
+  prev = $(this).jqmData("prev");
+  next = $(this).jqmData("next");
+  console.log(page);
 
+  // $(document).one("swipeleft", page, prevf);
+  // console.log(prev);
+  $(document).one("swiperight", page, nextf);
 
-
-
-$(document).bind('pageinit', "[data-role='page']", function() {
   function makemap(locs, lat, lon, w, h) {
     var str = '';
     for(var l in locs) {
@@ -71,6 +52,8 @@ $(document).bind('pageinit', "[data-role='page']", function() {
   //If util.js calls define(), then this function is not fired until
   //util's dependencies have loaded, and the util argument will hold
   //the module value for "helper/util".
+
+
   function d2h(d) {
     return d > 9 ? d.toString(16) : '0' + d.toString(16);
   }
@@ -114,9 +97,9 @@ $(document).bind('pageinit', "[data-role='page']", function() {
             letter: String.fromCharCode(65 + Number(d))
           });
           var new_routes = [];
-          for(var r in stop.routes){
+          for(var r in stop.routes) {
             var new_route = {};
-            new_route = stop.routes[r]
+            new_route = stop.routes[r];
             stop.routes[r].json = JSON.stringify(stop);
             stop.routes[r].json = JSON.stringify(stop);
           }
@@ -129,7 +112,9 @@ $(document).bind('pageinit', "[data-role='page']", function() {
         $('#page-stops .app li.bus').click(function() {
           var json = JSON.parse($(this).attr('data-json'));
           $('#page-routes .app').html($.mustache("times", json));
-          $.mobile.changePage( "#page-routes", { transition: "slide"} );
+          $.mobile.changePage("#page-routes", {
+            transition: "slide"
+          });
         });
       },
       error: function() {
@@ -145,26 +130,6 @@ $(document).bind('pageinit', "[data-role='page']", function() {
   // One-shot position request.
   navigator.geolocation.getCurrentPosition(showMap);
 
-          // $.mobile.loadPage( "test.html" );
-      var page = "#" + $( this ).attr( "id" ),
-          prev = $( this ).jqmData( "prev" ),
-          next = $( this ).jqmData( "next" );
-          console.log(page);
-      if ( next ) {
-        // Prefetch the next page
-        $.mobile.loadPage( next + ".html" );
-        // Navigate to next page on swipe left
-        $( document ).on( "swipeleft", page, function() {
-            $.mobile.changePage( next + ".html" );
-        });
-      }
-      if ( prev ) {
-        console.log(prev);
-        $.mobile.loadPage( prev + ".html" );
-        $( document ).on( "swiperight", page, function() {
-            $.mobile.changePage( prev + ".html", { reverse: true } );
-        });
-      }
 
 
 });

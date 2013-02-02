@@ -22,14 +22,14 @@
     <body>
 
         <!-- Home -->
-        <div data-role="page" id="page-stops">
-            <div data-theme="a" data-role="header">
+        <div data-role="page" id="page-map" ata-dom-cache="true" data-prev="index" data-next="search" data-url="maps">
+            <div data-theme="a" data-role="header" >
 
                 <h3 class="app-title">
-                    Transit
+                    Transit Map
                 </h3>
                <div data-role="fieldcontain" class="options">
-                    <select name="search" data-mini="true">
+                     <select name="search" data-mini="true">
                         <option value="main">
                             Nearby
                         </option>
@@ -44,98 +44,6 @@
             </div>
             <div data-role="content" class="app">
             </div>
-       </div>
-
-        <!-- Routes page -->
-        <div data-role="page" id="page-routes">
-            <div data-role="content" class="app">
-                test!
-            </div>
         </div>
-
-        <div data-role="page" id="page-search">
-            <div data-theme="a" data-role="header">
-
-                <h3 class="app-title">
-                    Transit
-                </h3>
-               <div data-role="fieldcontain" class="options">
-                    <select name="search" data-mini="true">
-                        <option value="search">
-                            Search
-                        </option>
-                    </select>
-                    <select name="map" data-mini="true">
-                        <option value="maps">
-                            Map
-                        </option>
-                    </select>
-                    <select name="nearby" data-mini="true">
-                        <option value="main">
-                            Nearby
-                        </option>
-                    </select>
-                </div> 
-            </div>
-            <div data-role="content" class="app">
-            </div>
-        </div>
-
-
-        <div data-role="page" id="page-map">
-            <div data-theme="a" data-role="header">
-
-                <h3 class="app-title">
-                    Transit
-                </h3>
-               <div data-role="fieldcontain" class="options">
-                    <select name="" data-mini="true">
-                        <option value="option1">
-                            Option 1
-                        </option>
-                    </select>
-                </div> 
-            </div>
-            <div data-role="content" class="app">
-            </div>
-        </div>
-
-        <script type="template/mustache" id="stops-tpl">
-
-        <img class="map" src="{{map}}"/>
-        <ul data-role="listview" data-divider-theme="b" data-inset="true" class="transit-list">
-            {{#stops}}
-            <li data-role="list-divider" role="heading" class="stop" >
-               <span style="color:{{color_fg}}; text-shadow:none; background-color:{{color_bg}}; border:2px solid white;">{{letter}}</span> Stop at: {{lat}},{{lon}} 
-            </li>
-            {{#routes}}
-            <li data-theme="c" class="bus">
-                <a href="#">
-                <div class="col-icon">
-                    <img src="images/bus.png" />
-                    <span class="transit-type"></span>
-                </div>
-                <div class="col-time">
-                    <div class="time-icon-outer">
-                        <div class="time-icon-inner">
-                            <p class="time-text">
-                                <span class="time">50 </span>
-                                <!-- <span class="time-metric">mins</span> --!>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-info">
-                       Route of type <span class="transit-type">{{type}} </span> with <span class="transit-name"> {{name}} </span> comes at {{#times}}{{.}},{{/times}}
-                </div>
-                </a>
-            </li>
-            {{/routes}}                    
-            {{/stops}}
-        </ul>
-        </script>
-        <script type="template/mustache" id="times-tpl">
-times...
-        </script>
     </body>
 </html>
