@@ -42,6 +42,5 @@ def createRoute(routeTag, times, direction):
     return {'type':routeTag, 'times':times, 'direction':direction}
  
 if __name__ == '__main__':
-    print createResponse("43.7196699","-79.4012199")
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port)
