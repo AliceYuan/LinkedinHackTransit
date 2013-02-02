@@ -8,6 +8,7 @@ from ttc_request import requestNextBusData
 def getUpcomingDepartures(latitude, longitude):
 	departures = []
 	nearbyStops = json.loads(getNearbyStops(latitude, longitude))["Stops"]
+	print nearbyStops;
 	for stop in nearbyStops:
 		dictionary = {}
 		if 'stopId' in stop:
@@ -24,3 +25,5 @@ def getUpcomingDepartures(latitude, longitude):
 		departures.append(dictionary)
 	data = { "Departures" : departures }
 	return data
+
+print getUpcomingDepartures(43.7196699,-79.4012199)

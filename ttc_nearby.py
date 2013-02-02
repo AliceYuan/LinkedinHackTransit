@@ -3,8 +3,6 @@
 import json
 import math
 import operator
-import urllib2
-import simplejson
 
 def getNearbyStops(latitude, longitude):
     stops = []
@@ -31,12 +29,3 @@ def distance(origin, destination):
     d = radius * c
     return d
 
-def convertToAddress(latitude, longitude){
-    request = "http://maps.googleapis.com/maps/api/geocode/json?latlng="+latitude+","+longitude+"&sensor=false"
-    file = opener.open(request)
-    jsonFile = simplejson.load(file)
-    results = jsonFile["results"]
-    firstResult = results[0]
-    address = firstResult["formatted_address"]
-    return address
-}
