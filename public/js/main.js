@@ -62,7 +62,7 @@ $(document).on('pageinit', "[data-role='page']", function() {
   }
 
   function rndColor() {
-    var col1 = [Math.min(Math.round(Math.random() * 255) + 50, 255), Math.min(Math.round(Math.random() * 255) + 50, 255), Math.min(Math.round(Math.random() * 255) + 50, 255)];
+    var col1 = [Math.min(Math.round(Math.random() * 255) + 50, 255), Math.min(Math.round(Math.random() * 255) + 50, 255), Math.max(Math.round(Math.random() * 255) - 100, 0)];
     col1 = d2h(col1[0]) + '' + d2h(col1[1]) + '' + d2h(col1[2]);
     return col1;
   }
