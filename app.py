@@ -15,18 +15,14 @@ def root():
 
 @app.route('/get', methods = ['GET']) 
 def getStops():
-    return send_from_directory('public', 'data.json')
-#    lat = request.args["lat"] 
-#   lon = request.args["lon"]
-#   lat = "43.7196699"
-#   lon = "-79.4012199"
-#   resp = createResponse(lat,lon)
-#   return jsonify(resp)
+    lat = request.args["lat"] 
+    lon = request.args["lon"]
+    resp = createResponse(lat,lon)
+    return jsonify(resp)
 
-#def createResponse(lat,lon):
-#    upcoming = ttc_times.getUpcomingDepartures(float(lat),float(lon))
-##    upcoming = ""
-#  stops = []
+def createResponse(lat,lon):
+    upcoming = ttc_times.getUpcomingDepartures(float(lat),float(lon))
+    stops = []
 #   for stop in upcoming["Departures"]:
 #       if stop:
 #           route = createRoute("TTC", stop["route"], stop["minutes"])
