@@ -43,11 +43,7 @@ html {
   display: none;
 }
 
-/* line 53, ../sass/screen.scss */
-#page-stops .ui-content .transit-list .ui-li-divider, #page-routes .ui-content .transit-list .ui-li-divider {
-  height: 30px;
-}
-/* line 55, ../sass/screen.scss */
+/* line 54, ../sass/screen.scss */
 #page-stops .ui-content .transit-list .ui-li-divider .alpha-label, #page-routes .ui-content .transit-list .ui-li-divider .alpha-label {
   font-weight: bold;
   /*text-shadow: 1px 1px white;*/
@@ -57,24 +53,24 @@ html {
   margin-right: 10px;
   border-radius: 50%;
 }
-/* line 65, ../sass/screen.scss */
+/* line 64, ../sass/screen.scss */
 #page-stops .ui-content .transit-list li.bus, #page-routes .ui-content .transit-list li.bus {
   min-height: 120px;
   vertical-align: middle;
 }
-/* line 68, ../sass/screen.scss */
+/* line 67, ../sass/screen.scss */
 #page-stops .ui-content .transit-list li.bus .col-icon, #page-routes .ui-content .transit-list li.bus .col-icon {
   float: left;
   margin-right: 20px;
   height: 120px;
 }
-/* line 72, ../sass/screen.scss */
+/* line 71, ../sass/screen.scss */
 #page-stops .ui-content .transit-list li.bus .col-icon img, #page-routes .ui-content .transit-list li.bus .col-icon img {
   height: 40px;
   margin: 2em auto;
   float: left;
 }
-/* line 77, ../sass/screen.scss */
+/* line 76, ../sass/screen.scss */
 #page-stops .ui-content .transit-list li.bus .col-icon .transit-type, #page-routes .ui-content .transit-list li.bus .col-icon .transit-type {
   font-size: 1.5em;
   color: red;
@@ -82,19 +78,19 @@ html {
   left: 35px;
   bottom: 20px;
 }
-/* line 85, ../sass/screen.scss */
+/* line 84, ../sass/screen.scss */
 #page-stops .ui-content .transit-list li.bus .col-info, #page-routes .ui-content .transit-list li.bus .col-info {
   margin: 1em 0;
   white-space: normal;
   margin-right: 60px;
 }
-/* line 91, ../sass/screen.scss */
+/* line 90, ../sass/screen.scss */
 #page-stops .ui-content .transit-list li.bus .col-time, #page-routes .ui-content .transit-list li.bus .col-time {
   position: absolute;
   right: 40px;
   display: inline-block;
 }
-/* line 95, ../sass/screen.scss */
+/* line 94, ../sass/screen.scss */
 #page-stops .ui-content .transit-list li.bus .col-time .time-icon-outer, #page-routes .ui-content .transit-list li.bus .col-time .time-icon-outer {
   background: gray;
   height: 50px;
@@ -107,7 +103,7 @@ html {
   position: relative;
   margin: 2em 0;
 }
-/* line 103, ../sass/screen.scss */
+/* line 102, ../sass/screen.scss */
 #page-stops .ui-content .transit-list li.bus .col-time .time-icon-inner, #page-routes .ui-content .transit-list li.bus .col-time .time-icon-inner {
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
@@ -121,12 +117,12 @@ html {
   height: 40px;
   width: 40px;
 }
-/* line 112, ../sass/screen.scss */
+/* line 111, ../sass/screen.scss */
 #page-stops .ui-content .transit-list li.bus .col-time .time-icon-inner .time-text, #page-routes .ui-content .transit-list li.bus .col-time .time-icon-inner .time-text {
   text-align: center;
   color: white;
 }
-/* line 115, ../sass/screen.scss */
+/* line 114, ../sass/screen.scss */
 #page-stops .ui-content .transit-list li.bus .col-time .time-icon-inner .time-text .time, #page-routes .ui-content .transit-list li.bus .col-time .time-icon-inner .time-text .time {
   margin: 0.5em 0;
   font-size: 1.9em;
@@ -134,7 +130,7 @@ html {
   font-weight: bold;
 }
 
-/* line 136, ../sass/screen.scss */
+/* line 135, ../sass/screen.scss */
 #navigation .nav-list li {
   width: 25%;
   float: left;
