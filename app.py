@@ -36,7 +36,7 @@ def createResponse(lat,lon):
     return responseJSON
 
 def createStop(lat, lon, intersection, routes):
-    return {'lat':lat,'lon':lon, 'intersection':intersection 'routes':routes}
+    return {'lat':lat,'lon':lon, 'intersection':intersection, 'routes':routes}
 
 def createRoute(routeTag, times, direction):
     return {'type':routeTag, 'times':times, 'direction':direction}
