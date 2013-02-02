@@ -8,7 +8,9 @@
 
 
 body{
-	background: grey;
+	background: white;
+	min-width: 300px;
+	overflow-x: auto;
 }
 
 li{
@@ -25,20 +27,8 @@ html{
 	width: 	100%;
 }
 
-.main{
-	background: white;
-	height: 100%;
-	width: 100%;
-	max-width: 500px;
-	max-height: 900px;
-	overflow: hidden;
-
-	@include border-radius(20px);
-	@include box-shadow(rgba(50, 50, 50, 0.75) 0px 0px 50px );
-	margin: 0 auto;
-}
-
 #page-stops{
+	min-width: 350px;
 	.ui-header{
 		.app-title{
 			display: inline-block;
@@ -56,16 +46,16 @@ html{
 			.ui-li-divider	{
 				height: 30px;
 			}
-			li{
-				height: 120px;
+			li.bus{
+				min-height: 120px;
 				vertical-align: middle;
 				.col-icon{
 					float: left;
-					max-width: 100px;
-					width: 100px;
+					margin-right: 20px;
+					height: 120px;
 					img{
-						height: 80px;
-						margin: 0.5em auto;
+						height: 40px;
+						margin: 2em auto;
 						float: left;
 					}
 					.transit-type{
@@ -77,8 +67,9 @@ html{
 					}
 				}
 				.col-info{
+					margin: 1em 0;
 					white-space: normal;
-					margin-right: 100px;
+					margin-right: 60px;
 
 				}
 				.col-time{
@@ -87,25 +78,27 @@ html{
 					display: inline-block;
 					.time-icon-outer{
 						background:  gray;
-						height: 80px;
-						width:   80px;
+						height: 50px;
+						width:   50px;
 						@include border-radius(50%);
+						position: relative;
+						margin: 2em 0;
 					}
 					.time-icon-inner{
 						@include border-radius(50%);
 						background:  orange;
 						position: absolute;
-						left: 10px;
-						top:  10px;
-						height: 60px;
-						width: 60px;
+						left: 5px;
+						top:  5px;
+						height: 40px;
+						width: 40px;
 
 						.time-text{
 							text-align: center;
 							color: white;
 							.time{
-								margin: .17em 0;
-								font-size: 3.5em;
+								margin: .3em 0;
+								font-size: 2em;
 								display: block;
 							}
 							.time-metric{

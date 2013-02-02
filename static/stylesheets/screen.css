@@ -4,109 +4,99 @@
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
 /* line 10, ../sass/screen.scss */
 body {
-  background: grey;
+  background: white;
+  min-width: 300px;
+  overflow-x: auto;
 }
 
-/* line 14, ../sass/screen.scss */
+/* line 16, ../sass/screen.scss */
 li {
   list-style: none;
 }
 
-/* line 18, ../sass/screen.scss */
+/* line 20, ../sass/screen.scss */
 html {
   width: 100%;
   height: 100%;
 }
 
-/* line 23, ../sass/screen.scss */
+/* line 25, ../sass/screen.scss */
 #main-wrapper {
   height: 100%;
   width: 100%;
 }
 
-/* line 28, ../sass/screen.scss */
-.main {
-  background: white;
-  height: 100%;
-  width: 100%;
-  max-width: 500px;
-  max-height: 900px;
-  overflow: hidden;
-  -webkit-border-radius: 20px;
-  -moz-border-radius: 20px;
-  -ms-border-radius: 20px;
-  -o-border-radius: 20px;
-  border-radius: 20px;
-  -webkit-box-shadow: rgba(50, 50, 50, 0.75) 0px 0px 50px;
-  -moz-box-shadow: rgba(50, 50, 50, 0.75) 0px 0px 50px;
-  box-shadow: rgba(50, 50, 50, 0.75) 0px 0px 50px;
-  margin: 0 auto;
+/* line 30, ../sass/screen.scss */
+#page-stops {
+  min-width: 350px;
 }
-
-/* line 43, ../sass/screen.scss */
+/* line 33, ../sass/screen.scss */
 #page-stops .ui-header .app-title {
   display: inline-block;
   float: left;
   margin: 1em auto;
 }
-/* line 48, ../sass/screen.scss */
+/* line 38, ../sass/screen.scss */
 #page-stops .ui-header .options {
   width: 15%;
   display: inline-block;
 }
-/* line 56, ../sass/screen.scss */
+/* line 46, ../sass/screen.scss */
 #page-stops .ui-content .transit-list .ui-li-divider {
   height: 30px;
 }
-/* line 59, ../sass/screen.scss */
-#page-stops .ui-content .transit-list li {
-  height: 120px;
+/* line 49, ../sass/screen.scss */
+#page-stops .ui-content .transit-list li.bus {
+  min-height: 120px;
   vertical-align: middle;
 }
-/* line 62, ../sass/screen.scss */
-#page-stops .ui-content .transit-list li .col-icon {
+/* line 52, ../sass/screen.scss */
+#page-stops .ui-content .transit-list li.bus .col-icon {
   float: left;
-  max-width: 100px;
-  width: 100px;
+  margin-right: 20px;
+  height: 120px;
 }
-/* line 66, ../sass/screen.scss */
-#page-stops .ui-content .transit-list li .col-icon img {
-  height: 80px;
-  margin: 0.5em auto;
+/* line 56, ../sass/screen.scss */
+#page-stops .ui-content .transit-list li.bus .col-icon img {
+  height: 40px;
+  margin: 2em auto;
   float: left;
 }
-/* line 71, ../sass/screen.scss */
-#page-stops .ui-content .transit-list li .col-icon .transit-type {
+/* line 61, ../sass/screen.scss */
+#page-stops .ui-content .transit-list li.bus .col-icon .transit-type {
   font-size: 1.5em;
   color: red;
   position: absolute;
   left: 35px;
   bottom: 20px;
 }
-/* line 79, ../sass/screen.scss */
-#page-stops .ui-content .transit-list li .col-info {
+/* line 69, ../sass/screen.scss */
+#page-stops .ui-content .transit-list li.bus .col-info {
+  margin: 1em 0;
   white-space: normal;
-  margin-right: 100px;
+  margin-right: 60px;
 }
-/* line 84, ../sass/screen.scss */
-#page-stops .ui-content .transit-list li .col-time {
+/* line 75, ../sass/screen.scss */
+#page-stops .ui-content .transit-list li.bus .col-time {
   position: absolute;
   right: 40px;
   display: inline-block;
 }
-/* line 88, ../sass/screen.scss */
-#page-stops .ui-content .transit-list li .col-time .time-icon-outer {
+/* line 79, ../sass/screen.scss */
+#page-stops .ui-content .transit-list li.bus .col-time .time-icon-outer {
   background: gray;
-  height: 80px;
-  width: 80px;
+  height: 50px;
+  width: 50px;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   -ms-border-radius: 50%;
   -o-border-radius: 50%;
   border-radius: 50%;
+  position: relative;
+  margin: 2em 0;
 }
-/* line 94, ../sass/screen.scss */
-#page-stops .ui-content .transit-list li .col-time .time-icon-inner {
+/* line 87, ../sass/screen.scss */
+#page-stops .ui-content .transit-list li.bus .col-time .time-icon-inner {
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   -ms-border-radius: 50%;
@@ -114,24 +104,24 @@ html {
   border-radius: 50%;
   background: orange;
   position: absolute;
-  left: 10px;
-  top: 10px;
-  height: 60px;
-  width: 60px;
+  left: 5px;
+  top: 5px;
+  height: 40px;
+  width: 40px;
 }
-/* line 103, ../sass/screen.scss */
-#page-stops .ui-content .transit-list li .col-time .time-icon-inner .time-text {
+/* line 96, ../sass/screen.scss */
+#page-stops .ui-content .transit-list li.bus .col-time .time-icon-inner .time-text {
   text-align: center;
   color: white;
 }
-/* line 106, ../sass/screen.scss */
-#page-stops .ui-content .transit-list li .col-time .time-icon-inner .time-text .time {
-  margin: 0.17em 0;
-  font-size: 3.5em;
+/* line 99, ../sass/screen.scss */
+#page-stops .ui-content .transit-list li.bus .col-time .time-icon-inner .time-text .time {
+  margin: 0.3em 0;
+  font-size: 2em;
   display: block;
 }
 
-/* line 126, ../sass/screen.scss */
+/* line 119, ../sass/screen.scss */
 #navigation .nav-list li {
   width: 25%;
   float: left;
