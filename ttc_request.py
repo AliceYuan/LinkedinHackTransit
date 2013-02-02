@@ -13,14 +13,15 @@ def requestNextBusData(commandName, params):
 def getNearbyStops(latitude, longitude):
     stops = []
     distances = []
-    with open('ttc_stops.json') as ttcStops:
+    with open('data/ttc_stops.json') as ttcStops:
         stopJSON = json.load(ttcStops)
         stops = stopJSON['Stops']
     for stop in stops:
-        distances.append(distance([latitude, longitude], [float(stop['lat']), float(stop['lon'])]))
+        distances.append(distance([latitude, longitude], [float(stop[2]), float(stop[3])]))
     stops = [stops for (distances, stops) in sorted(zip(distances, stops))]
     data = { "Stops" : stops }
-    return json.dumps(data)
+	with open('data/ttc_sorted_stops.json', 'w') as ttcStops:
+		ttcStops.write(json.dumps(data, indent=2))
 
 def distance(origin, destination):
     lat1, lon1 = origin
@@ -81,6 +82,7 @@ def getStops():
 # 	return data
 
 if __name__=="__main__":
+	getNearbyStops(43.7739, -79.41427)
 	# getRoutes()
 	# getStops()
 	# data = { "Stops" : stops }
