@@ -68,12 +68,22 @@ html{
 						margin: 0.5em auto;
 						float: left;
 					}
+					.transit-type{
+						font-size: 1.5em;
+						color: red;
+						position: absolute;
+						left: 	35px;
+						bottom: 20px;
+					}
 				}
 				.col-info{
 					float: left;
+					padding-right: 100px;
+					width: 80%;
 				}
 				.col-time{
-					float: right;
+					position: absolute;
+					right: 40px;
 					display: inline-block;
 					.time-icon-outer{
 						background:  grey;
@@ -84,16 +94,18 @@ html{
 					.time-icon-inner{
 						@include border-radius(50%);
 						background:  orange;
-						position: relative;
+						position: absolute;
 						left: 10px;
 						top:  10px;
 						height: 60px;
 						width: 60px;
+
 						.time-text{
 							text-align: center;
 							color: white;
 							.time{
-								font-size: 4em;
+								margin: .17em 0;
+								font-size: 3.5em;
 								display: block;
 							}
 							.time-metric{
