@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 import os
+import collections
 import json
 from flask import Flask, request, render_template, Response, url_for, jsonify, send_from_directory
 from werkzeug import SharedDataMiddleware
@@ -24,15 +25,21 @@ def getStops():
 def createResponse(lat,lon):
     upcoming = getPredictions(float(lat), float(lon))
     upcoming = json.loads(upcoming)
-    stops = []
-    lat = []
-    lon = []
+    stops = collections.OrderedDict()
     for stop in upcoming["Predictions"]:
         if stop:
             route = createRoute(stop[1], stop[6], stop[5])
-            stop = createStop(stop[2], stop[3], stop[4], [route])
-            stops.append(stop)
-    responseJSON = {"stops" : stops}
+            stopend = createStop(stop[2], stop[3], stop[4], [route])
+            if str(stop[2])+str(stop[3]) not in stops:
+                stops[str(stop[2])+str(stop[3])] = stopend
+            else:
+                val = stops[str(stop[2]) + str(stop[3])]
+                val['routes'].append(route)
+                stops[str(stop[2])+str(stop[3])] = val
+    resp = []
+    for k,v in stops.items():
+        resp.append(v)
+    responseJSON = {"stops" : resp}
     return responseJSON
 
 def createStop(lat, lon, intersection, routes):
@@ -42,5 +49,6 @@ def createRoute(routeTag, times, direction):
     return {'type':routeTag, 'times':times, 'direction':direction}
  
 if __name__ == '__main__':
+    print createResponse("10","20")
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port)
