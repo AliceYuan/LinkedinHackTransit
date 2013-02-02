@@ -1,2 +1,10 @@
 .sass-cache
-.DS_Store
+
+# Exclude Virtualenv artifacts
+venv
+
+# Standard ignores
+*.pyc
+*.pyo
+*.DS_Store
+*.swp
