@@ -34,7 +34,7 @@ $(document).on('pageinit', "[data-role='page']", function() {
   var page = "#" + $(this).attr("id");
   prev = $(this).jqmData("prev");
   next = $(this).jqmData("next");
-  console.log(page);
+
 
   // $(document).one("swipeleft", page, prevf);
   // console.log(prev);
@@ -46,6 +46,9 @@ $(document).on('pageinit', "[data-role='page']", function() {
       str += "&markers=color:" + locs[l].color + "%7Clabel:" + locs[l].letter + "%7C" + locs[l].lat + "," + locs[l].lon;
     }
     return "http://maps.googleapis.com/maps/api/staticmap?sensor=false&center=" + lat + "," + lon + "&zoom=14&size=" + w + "x" + h + "&maptype=roadmap" + str;
+  }
+  if (page == "page-index"){
+    
   }
 
   //This function is called when scripts/helper/util.js is loaded.
