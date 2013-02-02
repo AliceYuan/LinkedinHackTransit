@@ -63,6 +63,7 @@ def getPredictions(latitude, longitude):
 	predictionList = []
 	numPredictions = 0
 	check = False
+	dictionary = {}
 	nearbyStops = json.loads(getNearbyStops(latitude, longitude))["Stops"]
 	for stop in nearbyStops:
 		if check:
@@ -81,7 +82,11 @@ def getPredictions(latitude, longitude):
 					minutes = []
 					for prediction in direction.findall('prediction'):
 						minutes.append(prediction.attrib["minutes"])
-					predictionList.append((predictions.attrib["stopTag"], predictions.attrib["routeTag"], stop[2], stop[3], predictions.attrib["stopTitle"], direction.attrib["title"], minutes))
+					if predictions.attrib["routeTag"] + direction.attrib["title"] not in dictionary:
+						predictionList.append((predictions.attrib["stopTag"], predictions.attrib["routeTag"], stop[2], stop[3], predictions.attrib["stopTitle"], direction.attrib["title"], minutes))
+						dictionary[predictions.attrib["routeTag"] + direction.attrib["title"]] = 1
+					else:
+						numPredictions -= 1
 	predictionJSON = { "Predictions" : predictionList }
 	return json.dumps(predictionJSON, indent=2)
 
