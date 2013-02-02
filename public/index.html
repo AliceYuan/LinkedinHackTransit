@@ -58,14 +58,14 @@
         <ul data-role="listview" data-divider-theme="b" data-inset="true" class="transit-list">
             {{#stops}}
             <li data-role="list-divider" role="heading" class="stop" >
-                <span class="alpha-label" style="color:{{color_fg}}; font-size:2em; ">{{letter}}</span> {{name}}
+                <span class="alpha-label" style="color:{{color_fg}};">{{letter}}</span> {{name}}
             </li>
             {{#routes}}
             <li data-theme="c" class="bus" data-json="{{json}}">
                 <a href="#">
                 <div class="col-icon">
                     <img src="images/bus.png" />
-                    <span class="transit-type"></span>
+                    <span class="transit-type">{{type}}</span>
                 </div>
                 <div class="col-time">
                     <div class="time-icon-outer">
@@ -78,7 +78,7 @@
                     </div>
                 </div>
                 <div class="col-info">
-                       <span class="transit-type">{{type}}</span>: <span class="transit-name"> {{direction}} </span>
+                       <span class="transit-name"> {{direction}} </span>
                 </div>
                 </a>
             </li>
@@ -94,11 +94,11 @@
                {{name}}
             </li>
             {{#times}}
-            <li data-theme="c">
+            <li data-theme="c" class="bus">
                 <a href="#">
                 <div class="col-icon">
                     <img src="images/bus.png" />
-                    <span class="transit-type"> TTC</span>
+                    <span class="transit-type">{{type}}</span>
                 </div>
                 <div class="col-time">
                     <div class="time-icon-outer">

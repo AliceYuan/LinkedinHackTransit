@@ -44,7 +44,9 @@ html{
 	}
 }
 
-
+#page-routes .ui-icon-arrow-r {
+	display:none;
+}
 #page-stops, #page-routes{
 	.ui-content{
 		.transit-list{
@@ -52,7 +54,12 @@ html{
 				height: 30px;
 				.alpha-label{
 					font-weight: bold;
-					text-shadow: 1px 1px white;
+					/*text-shadow: 1px 1px white;*/
+					font-size: 1.5em;
+					background-color: black;
+					padding: 2px 8px;
+					margin-right: 10px;
+					border-radius: 50%;
 				}
 			}
 			li.bus{
