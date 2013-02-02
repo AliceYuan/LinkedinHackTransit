@@ -12,7 +12,11 @@
     "lon": -79.49303,
     "routes": [{
       "type": "TTC",
-      "name": "stop2",
+      "name": "stop2 route 1",
+      "times": [130, 2601, 2620]
+    }, {
+      "type": "TTC",
+      "name": "stop2 route 2",
       "times": [120, 2901, 3020]
     }]
   }, {

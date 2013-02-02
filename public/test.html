@@ -13,9 +13,14 @@
 	<body>
 		<h1>Hello World!</h1>
 		<div id="app"></div>
-		<script type="template/mustache" id="hello-tpl">
-			<div>You are here:</div>
-			<div>{{lat}}, {{lon}}</div>
+		<script type="template/mustache" id="stops-tpl">
+			{{#stops}}
+			<ul>Stop at: {{lat}},{{lon}}
+			{{#routes}}
+			<li>Route of type {{type}} with name {{name}} comes at {{#times}}{{.}},{{/times}}</li>
+			{{/routes}}
+			</ul>
+			{{/stops}}
 		</script>
 	</body>
 </html>

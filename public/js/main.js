@@ -11,19 +11,15 @@ require(["helper/util"], function(util) {
         url: 'data.json',
         cache: false,
         data: {lat: position.coords.latitude, lon:position.coords.longitude },
-        success: function(){
-          console.log("got data");
-          console.log(arguments);
+        success: function(data){
+          $('#app').html($.mustache("stops", data));
         },
         error: function(){
-          console.log("got err");
-          console.log(arguments);
         }
       });
 
-      var location = {lat: position.coords.latitude, lon:position.coords.longitude};
-      console.log(location);
-      $('#app').html($.mustache("hello", location));
+      // var location = {lat: position.coords.latitude, lon:position.coords.longitude};
+      // console.log(location);
     }
 
     // One-shot position request.
