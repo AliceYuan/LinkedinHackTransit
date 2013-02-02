@@ -1,21 +1,59 @@
 $(document).bind('pageshow', function(e) {
-  $('#'+e.target.id).trigger('create');
-  if(e.target.id == 'page-routes'){
+  $('#' + e.target.id).trigger('create');
+  if(e.target.id == 'page-routes') {
+    console.log(arguments);
+    console.log("routes page loaded");
   }
 });
-$(document).bind('pageinit', function() {
+
+$(document).on("mobileinit", function() {
+  $.mobile.defaultPageTransition = "slide";
+});
+
+function nextf() {
+  console.log(next);
+  if(next) {
+    $.mobile.changePage(next + ".html");
+  }
+}
+
+// function prevf() {
+//   console.log(prev);
+//   if(prev) {
+//     $.mobile.changePage(prev + ".html", {
+//       reverse: true
+//     });
+//   }
+// }
+
+
+var prev, next;
+
+$(document).on('pageinit', "[data-role='page']", function() {
+
+  var page = "#" + $(this).attr("id");
+  prev = $(this).jqmData("prev");
+  next = $(this).jqmData("next");
+  console.log(page);
+
+  // $(document).one("swipeleft", page, prevf);
+  // console.log(prev);
+  $(document).one("swiperight", page, nextf);
+
   function makemap(locs, lat, lon, w, h) {
     var str = '';
     for(var l in locs) {
       str += "&markers=color:" + locs[l].color + "%7Clabel:" + locs[l].letter + "%7C" + locs[l].lat + "," + locs[l].lon;
     }
-    return "http://maps.googleapis.com/maps/api/staticmap?sensor=false&center=" + lat + "," + lon + "&zoom=10&size=" + w + "x" + h + "&maptype=roadmap" + str;
+    return "http://maps.googleapis.com/maps/api/staticmap?sensor=false&center=" + lat + "," + lon + "&zoom=14&size=" + w + "x" + h + "&maptype=roadmap" + str;
   }
 
   //This function is called when scripts/helper/util.js is loaded.
   //If util.js calls define(), then this function is not fired until
   //util's dependencies have loaded, and the util argument will hold
   //the module value for "helper/util".
+
+
   function d2h(d) {
     return d > 9 ? d.toString(16) : '0' + d.toString(16);
   }
@@ -59,9 +97,9 @@ $(document).bind('pageinit', function() {
             letter: String.fromCharCode(65 + Number(d))
           });
           var new_routes = [];
-          for(var r in stop.routes){
+          for(var r in stop.routes) {
             var new_route = {};
-            new_route = stop.routes[r]
+            new_route = stop.routes[r];
             stop.routes[r].json = JSON.stringify(stop);
             stop.routes[r].json = JSON.stringify(stop);
           }
@@ -74,7 +112,9 @@ $(document).bind('pageinit', function() {
         $('#page-stops .app li.bus').click(function() {
           var json = JSON.parse($(this).attr('data-json'));
           $('#page-routes .app').html($.mustache("times", json));
-          $.mobile.changePage( "#page-routes", { transition: "slide"} );
+          $.mobile.changePage("#page-routes", {
+            transition: "slide"
+          });
         });
       },
       error: function() {
@@ -89,4 +129,7 @@ $(document).bind('pageinit', function() {
 
   // One-shot position request.
   navigator.geolocation.getCurrentPosition(showMap);
+
+
+
 });

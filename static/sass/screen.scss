@@ -22,25 +22,29 @@ html{
 	height:  100%;
 }
 
-#main-wrapper{
-	height: 100%;
-	width: 	100%;
-}
-
-#page-stops{
+.ui-page{
 	min-width: 350px;
 	.ui-header{
 		.app-title{
-			display: inline-block;
-			float: left;
 			margin: 1em auto;
+			font-family: 'LimelightRegular',Arial,sans-serif;
+
 		}
 		.options{
-			width: 15%;
+			position:  absolute;
+			top: 10px;
+			right: 10px;
+			margin: 0;
+			width: 20%;
+			min-width: 150px;
 			display: inline-block;
 		}
 
 	}
+}
+
+
+#page-stops{
 	.ui-content{
 		.transit-list{
 			.ui-li-divider	{

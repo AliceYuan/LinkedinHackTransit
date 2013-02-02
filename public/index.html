@@ -10,6 +10,8 @@
         <link href="stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" />
 
         <link rel="stylesheet" href="stylesheets/jquery.mobile-1.2.0.css" />
+        <link rel="stylesheet" href="fonts/limelight/stylesheet.css" type="text/css" charset="utf-8">
+ 
         <script src="js/jquery-1.8.3.js"></script>
         <script src="js/jquery.mobile-1.2.0.js"></script>
         <script src="js/mustache.js"></script>
@@ -20,41 +22,32 @@
     <body>
 
         <!-- Home -->
-        <div data-role="page" id="page-stops">
+        <div data-role="page" id="page-stops" ata-dom-cache="true" data-prev="search" data-next="maps" data-url="index">
             <div data-theme="a" data-role="header">
 
                 <h3 class="app-title">
                     Transit
                 </h3>
                <div data-role="fieldcontain" class="options">
-                    <select name="" data-mini="true">
-                        <option value="option1">
-                            Option 1
+                    <select name="search" data-mini="true">
+                        <option value="main">
+                            Nearby
+                        </option>
+                        <option value="search">
+                            Search
+                        </option>
+                        <option value="maps">
+                            Map
                         </option>
                     </select>
                 </div> 
             </div>
             <div data-role="content" class="app">
             </div>
-<!--             <div data-theme="a" data-role="footer" data-position="fixed" id="navigation">
-                <ul class="nav-list" data-role="listview" data-inset="true" >
-                    <li data-theme="c">
-                        <a href="#">
-                            near me
-                        </a>
-                    </li>
-                    <li>
-                        fav
-                    </li>
-                    <li>
-                        test
-                    </li>
-                <ul>
-            </div>
- -->        </div>
+       </div>
 
         <!-- Routes page -->
-        <div id="page-routes">
+        <div data-role="page" id="page-routes">
             <div data-role="content" class="app">
                 test!
             </div>
@@ -62,11 +55,12 @@
 
         <script type="template/mustache" id="stops-tpl">
 
-        <img src="{{map}}"/>
+        <img class="map" src="{{map}}"/>
         <ul data-role="listview" data-divider-theme="b" data-inset="true" class="transit-list">
             {{#stops}}
             <li data-role="list-divider" role="heading" class="stop" >
-               <span style="color:{{color_fg}}; text-shadow:none; background-color:{{color_bg}}; border:2px solid white;">{{letter}}</span> Stop {{name}} at: {{lat}},{{lon}} 
+                <span style="color:{{color_fg}}; text-shadow:none; background-color:{{color_bg}}; border:2px solid white;">{{letter}}</span> Stop {{name}} at: {{lat}},{{lon}} 
+
             </li>
             {{#routes}}
             <li data-theme="c" class="bus" data-json="{{json}}">
@@ -90,11 +84,11 @@
                 </div>
                 </a>
             </li>
-            {{/routes}}
+            {{/routes}}                    
             {{/stops}}
         </ul>
         </script>
-        <script type="template/mustache" id="times-tpl">
+<script type="template/mustache" id="times-tpl">
 
         <ul data-role="listview" data-divider-theme="b" data-inset="true" class="transit-list">
             {{#routes}}
