@@ -20,12 +20,12 @@ require(["helper/util"], function(util) {
           var view = {stops:[]};
           for(var d in data.stops){
             var stop = data.stops[d];
-            stop.map = (function(lat, lon, w, h){
-              return function(){
-                return util.makemap(lat, lon, w, h);}})(stop.lat, stop.lon, w, h);
+            stop.map = util.makemap(stop.lat, stop.lon, w, h);
             view.stops.push(stop);
           }
-          $('#app').html($.mustache("stops", view)).trigger('create');
+          $('#page-stops .app').html($.mustache("stops", view)).trigger('create');
+
+          // $('#app li').click();
         },
         error: function(){
           console.log("ERROR");

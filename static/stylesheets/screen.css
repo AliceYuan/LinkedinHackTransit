@@ -44,31 +44,38 @@ html {
 }
 
 /* line 43, ../sass/screen.scss */
-#page-main .ui-header .app-title {
+#page-stops .ui-header .app-title {
   display: inline-block;
   float: left;
   margin: 1em auto;
 }
 /* line 48, ../sass/screen.scss */
-#page-main .ui-header .options {
+#page-stops .ui-header .options {
   width: 15%;
   display: inline-block;
 }
 /* line 56, ../sass/screen.scss */
-#page-main .ui-content .transit-list .ui-li-divider {
+#page-stops .ui-content .transit-list .ui-li-divider {
   height: 30px;
 }
 /* line 59, ../sass/screen.scss */
-#page-main .ui-content .transit-list li {
+#page-stops .ui-content .transit-list li {
   height: 120px;
+  vertical-align: middle;
+}
+/* line 62, ../sass/screen.scss */
+#page-stops .ui-content .transit-list li img {
+  height: 70%;
+  margin: 1em auto;
+  float: left;
 }
 
-/* line 65, ../sass/screen.scss */
+/* line 71, ../sass/screen.scss */
 img {
   height: 80%;
 }
 
-/* line 73, ../sass/screen.scss */
+/* line 79, ../sass/screen.scss */
 #navigation .nav-list li {
   width: 25%;
   float: left;

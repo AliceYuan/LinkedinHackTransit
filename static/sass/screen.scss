@@ -38,7 +38,7 @@ html{
 	margin: 0 auto;
 }
 
-#page-main{
+#page-stops{
 	.ui-header{
 		.app-title{
 			display: inline-block;
@@ -58,6 +58,12 @@ html{
 			}
 			li{
 				height: 120px;
+				vertical-align: middle;
+				img{
+					height: 70%;
+					margin: 1em auto;
+					float: left;
+				}
 			}
 		}
 	}
