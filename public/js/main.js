@@ -8,13 +8,16 @@ require(["helper/util"], function(util) {
     function showMap(position) {
       $.ajax({
         method: "GET",
-        url: 'data.json',
+        url: 'get',
         cache: false,
+        dataType: "json",
         data: {lat: position.coords.latitude, lon:position.coords.longitude },
         success: function(data){
           $('#app').html($.mustache("stops", data)).trigger('create');
         },
         error: function(){
+          console.log("ERROR");
+          console.log(arguments);
         }
       });
 
