@@ -18,7 +18,7 @@ def getUpcomingDepartures(latitude, longitude):
 				if len(predictions.findall('direction')) > 0:
 					for direction in predictions.findall('direction'):
 						for prediction in direction.findall('prediction'):
-							dictionary.update({'route': predictions.attrib["routeTag"], 'stop': predictions.attrib["stopTitle"], 'minutes': prediction.attrib["minutes"]})
+							dictionary.update({'route': predictions.attrib["routeTag"], 'stop': predictions.attrib["stopTitle"], 'minutes': prediction.attrib["minutes"],'lat':stop["lat"],'lon':stop["lon"]})
 				else:
 					dictionary.update(predictions.attrib)
 		departures.append(dictionary)
