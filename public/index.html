@@ -29,8 +29,8 @@
                     Transit
                 </h3>
                <div data-role="fieldcontain" class="options">
-                    <select name="search" data-mini="true">
-                        <option value="main">
+                    <select name="select" data-mini="true">
+                        <option value="main" >
                             Nearby
                         </option>
                         <option value="search">
@@ -58,7 +58,7 @@
         <ul data-role="listview" data-divider-theme="b" data-inset="true" class="transit-list">
             {{#stops}}
             <li data-role="list-divider" role="heading" class="stop" >
-                <span style="color:{{color_fg}}; text-shadow:none; background-color:{{color_bg}}; border:2px solid white;">{{letter}}</span> {{name}}
+                <span class="alpha-label" style="color:{{color_fg}}; font-size:2em; ">{{letter}}</span> {{name}}
             </li>
             {{#routes}}
             <li data-theme="c" class="bus" data-json="{{json}}">
@@ -105,7 +105,6 @@
                         <div class="time-icon-inner">
                             <p class="time-text">
                                 <span class="time">{{.}} </span>
-                                <!-- <span class="time-metric">mins</span> --!>
                             </p>
                         </div>
                     </div>

@@ -5,84 +5,87 @@
 /* line 10, ../sass/screen.scss */
 body {
   background: white;
-  min-width: 300px;
   overflow-x: auto;
 }
 
-/* line 16, ../sass/screen.scss */
+/* line 15, ../sass/screen.scss */
 li {
   list-style: none;
 }
 
-/* line 20, ../sass/screen.scss */
+/* line 19, ../sass/screen.scss */
 html {
   width: 100%;
   height: 100%;
 }
 
-/* line 25, ../sass/screen.scss */
-.ui-page {
-  min-width: 350px;
-}
-/* line 28, ../sass/screen.scss */
+/* line 26, ../sass/screen.scss */
 .ui-page .ui-header .app-title {
-  margin: 1em auto;
+  margin: 0.5em 0 0 0;
   font-family: 'LimelightRegular',Arial,sans-serif;
+  font-size: 1.5em;
 }
-/* line 33, ../sass/screen.scss */
+/* line 32, ../sass/screen.scss */
 .ui-page .ui-header .options {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  margin: 0;
-  width: 20%;
-  min-width: 150px;
-  display: inline-block;
+  margin: 0 auto;
+  width: 100%;
+}
+/* line 36, ../sass/screen.scss */
+.ui-page .ui-header .options .ui-select {
+  width: 78%;
+  margin: 0 auto;
+  display: block;
+  padding: 10px;
 }
 
-/* line 50, ../sass/screen.scss */
-#page-stops .ui-content .transit-list .ui-li-divider {
+/* line 51, ../sass/screen.scss */
+#page-stops .ui-content .transit-list .ui-li-divider, #page-routes .ui-content .transit-list .ui-li-divider {
   height: 30px;
 }
 /* line 53, ../sass/screen.scss */
-#page-stops .ui-content .transit-list li.bus {
+#page-stops .ui-content .transit-list .ui-li-divider .alpha-label, #page-routes .ui-content .transit-list .ui-li-divider .alpha-label {
+  font-weight: bold;
+  text-shadow: 1px 1px white;
+}
+/* line 58, ../sass/screen.scss */
+#page-stops .ui-content .transit-list li.bus, #page-routes .ui-content .transit-list li.bus {
   min-height: 120px;
   vertical-align: middle;
 }
-/* line 56, ../sass/screen.scss */
-#page-stops .ui-content .transit-list li.bus .col-icon {
+/* line 61, ../sass/screen.scss */
+#page-stops .ui-content .transit-list li.bus .col-icon, #page-routes .ui-content .transit-list li.bus .col-icon {
   float: left;
   margin-right: 20px;
   height: 120px;
 }
-/* line 60, ../sass/screen.scss */
-#page-stops .ui-content .transit-list li.bus .col-icon img {
+/* line 65, ../sass/screen.scss */
+#page-stops .ui-content .transit-list li.bus .col-icon img, #page-routes .ui-content .transit-list li.bus .col-icon img {
   height: 40px;
   margin: 2em auto;
   float: left;
 }
-/* line 65, ../sass/screen.scss */
-#page-stops .ui-content .transit-list li.bus .col-icon .transit-type {
+/* line 70, ../sass/screen.scss */
+#page-stops .ui-content .transit-list li.bus .col-icon .transit-type, #page-routes .ui-content .transit-list li.bus .col-icon .transit-type {
   font-size: 1.5em;
   color: red;
   position: absolute;
   left: 35px;
   bottom: 20px;
 }
-/* line 73, ../sass/screen.scss */
-#page-stops .ui-content .transit-list li.bus .col-info {
+/* line 78, ../sass/screen.scss */
+#page-stops .ui-content .transit-list li.bus .col-info, #page-routes .ui-content .transit-list li.bus .col-info {
   margin: 1em 0;
   white-space: normal;
   margin-right: 60px;
 }
-/* line 79, ../sass/screen.scss */
-#page-stops .ui-content .transit-list li.bus .col-time {
+/* line 84, ../sass/screen.scss */
+#page-stops .ui-content .transit-list li.bus .col-time, #page-routes .ui-content .transit-list li.bus .col-time {
   position: absolute;
   right: 40px;
   display: inline-block;
 }
-/* line 83, ../sass/screen.scss */
-#page-stops .ui-content .transit-list li.bus .col-time .time-icon-outer {
+/* line 88, ../sass/screen.scss */
+#page-stops .ui-content .transit-list li.bus .col-time .time-icon-outer, #page-routes .ui-content .transit-list li.bus .col-time .time-icon-outer {
   background: gray;
   height: 50px;
   width: 50px;
@@ -94,33 +97,34 @@ html {
   position: relative;
   margin: 2em 0;
 }
-/* line 91, ../sass/screen.scss */
-#page-stops .ui-content .transit-list li.bus .col-time .time-icon-inner {
+/* line 96, ../sass/screen.scss */
+#page-stops .ui-content .transit-list li.bus .col-time .time-icon-inner, #page-routes .ui-content .transit-list li.bus .col-time .time-icon-inner {
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   -ms-border-radius: 50%;
   -o-border-radius: 50%;
   border-radius: 50%;
-  background: orange;
+  background: green;
   position: absolute;
   left: 5px;
   top: 5px;
   height: 40px;
   width: 40px;
 }
-/* line 100, ../sass/screen.scss */
-#page-stops .ui-content .transit-list li.bus .col-time .time-icon-inner .time-text {
+/* line 105, ../sass/screen.scss */
+#page-stops .ui-content .transit-list li.bus .col-time .time-icon-inner .time-text, #page-routes .ui-content .transit-list li.bus .col-time .time-icon-inner .time-text {
   text-align: center;
   color: white;
 }
-/* line 103, ../sass/screen.scss */
-#page-stops .ui-content .transit-list li.bus .col-time .time-icon-inner .time-text .time {
-  margin: 0.3em 0;
-  font-size: 2em;
+/* line 108, ../sass/screen.scss */
+#page-stops .ui-content .transit-list li.bus .col-time .time-icon-inner .time-text .time, #page-routes .ui-content .transit-list li.bus .col-time .time-icon-inner .time-text .time {
+  margin: 0.5em 0;
+  font-size: 1.9em;
   display: block;
+  font-weight: bold;
 }
 
-/* line 123, ../sass/screen.scss */
+/* line 129, ../sass/screen.scss */
 #navigation .nav-list li {
   width: 25%;
   float: left;
