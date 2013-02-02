@@ -5,6 +5,8 @@ from flask import Flask, request, render_template, Response, url_for, jsonify, s
 from werkzeug import SharedDataMiddleware
 from ttc_request import getPredictions
 
+cache = None
+
 app = Flask(__name__, template_folder='public')
 app.wsgi_app = SharedDataMiddleware(app.wsgi_app, {
   '/': os.path.join(os.path.dirname(__file__), 'public')
@@ -16,10 +18,12 @@ def root():
 
 @app.route('/get', methods = ['GET']) 
 def getStops():
+    global cache
     lat = request.args["lat"] 
     lon = request.args["lon"]
-    resp = createResponse(lat,lon)
-    return jsonify(resp)
+    if cache is None:
+        cache = createResponse(lat,lon)
+    return jsonify(cache)
 
 def createResponse(lat,lon):
     upcoming = getPredictions(float(lat), float(lon))
@@ -42,6 +46,5 @@ def createRoute(routeTag, times, direction):
     return {'type':routeTag, 'times':times, 'direction':direction}
  
 if __name__ == '__main__':
-    print createResponse("43.7196699","-79.4012199")
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port)
