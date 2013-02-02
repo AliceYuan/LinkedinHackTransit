@@ -1,0 +1,31 @@
+{
+  "Stops": [
+    {
+      "lat": "43.59571", 
+      "stopId": "12126", 
+      "tag": "7870", 
+      "lon": "-79.51593", 
+      "title": "Colonel Samuel Park At Opposite Humber College Cottages C-M"
+    }, 
+    {
+      "lat": "43.5942799", 
+      "tag": "3690_ar", 
+      "lon": "-79.5168", 
+      "title": "Colonel Sam Smith Park Loop At Colonel Sam Smith Park Dr"
+    }, 
+    {
+      "lat": "43.5942799", 
+      "stopId": "12120", 
+      "tag": "3690", 
+      "lon": "-79.5168", 
+      "title": "Colonel Sam Smith Park Loop At Colonel Sam Smith Park Dr"
+    }, 
+    {
+      "lat": "43.59587", 
+      "stopId": "12121", 
+      "tag": "10379", 
+      "lon": "-79.51584", 
+      "title": "Colonel Samuel Park At Humber College Cottages C-M"
+    }
+  ]
+}
