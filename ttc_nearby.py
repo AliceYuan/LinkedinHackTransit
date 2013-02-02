@@ -2,14 +2,14 @@
 
 import json, math
 
-def getNearbyStops(latitude, longitude):
+def getNearbyStops(latitude, longitude, distance):
     stops = []
     with open('ttc_stops.json') as ttcStops:
         stopJSON = json.load(ttcStops)
         stops = stopJSON['Stops']
     stopsInRange = []
     for stop in stops:
-        if(distance([latitude, longitude], [float(stop['lat']), float(stop['lon'])]) <= 0.2):
+        if(distance([latitude, longitude], [float(stop['lat']), float(stop['lon'])]) <= distance):
             stopsInRange.append(stop)
     nearbyStops = { "NearbyStops" : stopsInRange }
     return nearbyStops
