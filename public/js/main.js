@@ -45,7 +45,7 @@ $(document).on('pageinit', "[data-role='page']", function() {
     for(var l in locs) {
       str += "&markers=color:" + locs[l].color + "%7Clabel:" + locs[l].letter + "%7C" + locs[l].lat + "," + locs[l].lon;
     }
-    return "http://maps.googleapis.com/maps/api/staticmap?sensor=false&center=" + lat + "," + lon + "&zoom=14&size=" + w + "x" + h + "&maptype=roadmap" + str;
+    return "http://maps.googleapis.com/maps/api/staticmap?sensor=false&center=" + lat + "," + lon + "&zoom=16&size=" + w + "x" + h + "&maptype=roadmap" + str;
   }
   if (page == "page-index"){
     
