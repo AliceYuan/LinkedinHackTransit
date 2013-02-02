@@ -1,16 +1,17 @@
 $(document).bind('pageshow', function(e) {
-  $('#' + e.target.id).trigger('create');
   if(e.target.id == 'page-routes') {
+    $('#' + e.target.id).trigger('create');
     console.log(arguments);
     console.log("routes page loaded");
   }
 });
 
+var once = false;
 $(document).on("mobileinit", function() {
   $.mobile.defaultPageTransition = "slide";
 });
 
-function nextf() {
+function nextf(next) {
   console.log(next);
   if(next) {
     $.mobile.changePage(next + ".html");
@@ -45,6 +46,7 @@ $(document).on('pageinit', "[data-role='page']", function() {
     for(var l in locs) {
       str += "&markers=color:" + locs[l].color + "%7Clabel:" + locs[l].letter + "%7C" + locs[l].lat + "," + locs[l].lon;
     }
+    str += "&markers=color:white%7Clabel:%7C" + lat + "," + lon;
     return "http://maps.googleapis.com/maps/api/staticmap?sensor=false&center=" + lat + "," + lon + "&zoom=16&size=" + w + "x" + h + "&maptype=roadmap" + str;
   }
   if (page == "page-index"){
@@ -120,7 +122,12 @@ $(document).on('pageinit', "[data-role='page']", function() {
 
         $('#page-stops .app').html($.mustache("stops", view)).trigger('create');
 
-
+        if(!once){
+          once = true;
+          $('#page-stops select').change(function(){
+            nextf($(this).val());
+          });
+        }
         $('#page-stops .app li.bus').click(function() {
           var json = JSON.parse($(this).attr('data-json'));
           $('#page-routes .app').html($.mustache("times", json));
