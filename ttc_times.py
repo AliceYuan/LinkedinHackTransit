@@ -18,6 +18,6 @@ def getUpcomingDepartures(latitude, longitude):
 					for direction in predictions.findall('direction'):
 						for prediction in direction.findall('prediction'):
 							dictionary.update({'route': predictions.attrib["routeTag"], 'stop': predictions.attrib["stopTitle"], 'minutes': prediction.attrib["minutes"]})
-		departures.append(dictionary)
+							departures.append(dictionary)
 	data = { "Departures" : departures }
 	return data
