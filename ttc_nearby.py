@@ -13,7 +13,7 @@ def getNearbyStops(latitude, longitude):
     for stop in stops:
         distances.append(distance([latitude, longitude], [float(stop['lat']), float(stop['lon'])]))
     stops = [stops for (distances, stops) in sorted(zip(distances, stops))]
-    data = { "Stops" : stops[:5] }
+    data = { "Stops" : stops }
     return json.dumps(data)
 
 def distance(origin, destination):
