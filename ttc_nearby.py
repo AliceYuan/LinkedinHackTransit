@@ -1,18 +1,19 @@
 #!/usr/bin/env python
 
 import json, math
+import operator
 
-def getNearbyStops(latitude, longitude, distance):
+def getNearbyStops(latitude, longitude):
     stops = []
+    distances = []
     with open('ttc_stops.json') as ttcStops:
         stopJSON = json.load(ttcStops)
         stops = stopJSON['Stops']
-    stopsInRange = []
     for stop in stops:
-        if(distance([latitude, longitude], [float(stop['lat']), float(stop['lon'])]) <= distance):
-            stopsInRange.append(stop)
-    nearbyStops = { "NearbyStops" : stopsInRange }
-    return nearbyStops
+        distances.append(distance([latitude, longitude], [float(stop['lat']), float(stop['lon'])]))
+    stops = [stops for (distances, stops) in sorted(zip(distances, stops))]
+    stops = { "Stops" : stops[:5] }
+    return stops
 
 def distance(origin, destination):
     lat1, lon1 = origin
@@ -26,3 +27,4 @@ def distance(origin, destination):
     c = 2 * math.atan2(math.sqrt(a), math.sqrt(1-a))
     d = radius * c
     return d
+getNearbyStops(1,1)
