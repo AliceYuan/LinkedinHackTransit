@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>My Sample Project</title>
-        <!-- data-main attribute tells require.js to load
-             scripts/main.js after require.js loads. -->
-        <script src="js/jquery-1.8.3.js"></script>
-        <script src="js/jquery.mobile-1.2.0.js"></script>
-        <script data-main="js/main" src="js/require.js"></script>
-    </head>
-    <body>
-        <h1>My Sample Project</h1>
-    </body>
+	<head>
+		<title>My Sample Project</title>
+		<!-- data-main attribute tells require.js to load
+			 scripts/main.js after require.js loads. -->
+		<script src="js/jquery-1.8.3.js"></script>
+		<script src="js/mustache.js"></script>
+		<script src="js/mustache_helper.js"></script>
+		<script src="js/jquery.mobile-1.2.0.js"></script>
+		<script data-main="js/main" src="js/require.js"></script>
+	</head>
+	<body>
+		<h1>Hello World!</h1>
+		<div id="app"></div>
+		<script type="template/mustache" id="hello-tpl">
+			<div>You are here:</div>
+			<div>{{lat}}, {{lon}}</div>
+		</script>
+	</body>
 </html>

@@ -6,8 +6,13 @@ require(["helper/util"], function(util) {
     console.log(util.test);
 
     function showMap(position) {
-      console.log(position);
-      // Show a map centered at (position.coords.latitude, position.coords.longitude).
+      $.get('data.json', {lat: position.coords.latitude, lon:position.coords.longitude }, function(){
+        console.log('got data');
+      });
+
+      var location = {lat: position.coords.latitude, lon:position.coords.longitude};
+      console.log(location);
+      $('#app').html($.mustache("hello", location));
     }
 
     // One-shot position request.
