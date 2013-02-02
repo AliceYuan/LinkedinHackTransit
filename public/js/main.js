@@ -4,4 +4,12 @@ require(["helper/util"], function(util) {
     //util's dependencies have loaded, and the util argument will hold
     //the module value for "helper/util".
     console.log(util.test);
+
+    function showMap(position) {
+      console.log(position);
+      // Show a map centered at (position.coords.latitude, position.coords.longitude).
+    }
+
+    // One-shot position request.
+    navigator.geolocation.getCurrentPosition(showMap);
 });
