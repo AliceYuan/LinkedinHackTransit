@@ -42,18 +42,14 @@ def getRoutes():
 	rootRoutelist = soup.body.find_all('route')
 	routeList = []
 	for route in rootRoutelist:
-		r = {}
-		r.update({'tag':route['tag'], 'title':route['title']})
-		routeList.append(r)
-	routeJSON = { "Routes" : routeList }
-	return json.dumps(routeJSON, indent=2)
+		routeList.append((route['tag'], route['title']))
+	return routeList
 
 def getStops():
 	stopList = []
-	with open('data/ttc_routes.json') as ttcRoutes:
-		routeList = json.load(ttcRoutes)["Routes"]
+	routeList = getRoutes()
 	for route in routeList:
-		currentRoute = requestNextBusData('routeConfig', 'r='+route["tag"]+'&terse')
+		currentRoute = requestNextBusData('routeConfig', 'r='+route[0]+'&terse')
 		rootCurrentRoute = ET.fromstring(currentRoute)
 		for route in rootCurrentRoute.findall('route'):
 			for stop in route.findall('stop'):
@@ -94,9 +90,7 @@ def getPredictions(latitude, longitude):
 
 if __name__=="__main__":
 	# print getPredictions(43.7739, -79.41427)
-	print getRoutes()
-	# with open('data/ttc_routes.json', 'w') as ttcRoutes:
-	# 	ttcRoutes.write(getRoutes())
-	# print getStops()
+	# print getRoutes()
+	print getStops()
 	# with open('data/ttc_stops.json', 'w') as ttcStops:
 	# 	ttcStops.write(getStops())
