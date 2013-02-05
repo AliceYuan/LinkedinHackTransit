@@ -1,0 +1,712 @@
+{
+  "routes": [
+    {
+      "routeTag": "1S", 
+      "routeTitle": "1S-Yonge Subway Shuttle"
+    }, 
+    {
+      "routeTag": "5", 
+      "routeTitle": "5-Avenue Rd"
+    }, 
+    {
+      "routeTag": "6", 
+      "routeTitle": "6-Bay"
+    }, 
+    {
+      "routeTag": "7", 
+      "routeTitle": "7-Bathurst"
+    }, 
+    {
+      "routeTag": "8", 
+      "routeTitle": "8-Broadview"
+    }, 
+    {
+      "routeTag": "9", 
+      "routeTitle": "9-Bellamy"
+    }, 
+    {
+      "routeTag": "10", 
+      "routeTitle": "10-Van Horne"
+    }, 
+    {
+      "routeTag": "11", 
+      "routeTitle": "11-Bayview"
+    }, 
+    {
+      "routeTag": "12", 
+      "routeTitle": "12-Kingston Rd"
+    }, 
+    {
+      "routeTag": "14", 
+      "routeTitle": "14-Glencairn"
+    }, 
+    {
+      "routeTag": "15", 
+      "routeTitle": "15-Evans"
+    }, 
+    {
+      "routeTag": "16", 
+      "routeTitle": "16-McCowan"
+    }, 
+    {
+      "routeTag": "17", 
+      "routeTitle": "17-Birchmount"
+    }, 
+    {
+      "routeTag": "20", 
+      "routeTitle": "20-Cliffside"
+    }, 
+    {
+      "routeTag": "21", 
+      "routeTitle": "21-Brimley"
+    }, 
+    {
+      "routeTag": "22", 
+      "routeTitle": "22-Coxwell"
+    }, 
+    {
+      "routeTag": "23", 
+      "routeTitle": "23-Dawes"
+    }, 
+    {
+      "routeTag": "24", 
+      "routeTitle": "24-Victoria Park"
+    }, 
+    {
+      "routeTag": "25", 
+      "routeTitle": "25-Don Mills"
+    }, 
+    {
+      "routeTag": "26", 
+      "routeTitle": "26-Dupont"
+    }, 
+    {
+      "routeTag": "28", 
+      "routeTitle": "28-Davisville"
+    }, 
+    {
+      "routeTag": "29", 
+      "routeTitle": "29-Dufferin"
+    }, 
+    {
+      "routeTag": "30", 
+      "routeTitle": "30-Lambton"
+    }, 
+    {
+      "routeTag": "31", 
+      "routeTitle": "31-Greenwood"
+    }, 
+    {
+      "routeTag": "32", 
+      "routeTitle": "32-Eglinton West"
+    }, 
+    {
+      "routeTag": "33", 
+      "routeTitle": "33-Forest Hill"
+    }, 
+    {
+      "routeTag": "34", 
+      "routeTitle": "34-Eglinton East"
+    }, 
+    {
+      "routeTag": "35", 
+      "routeTitle": "35-Jane"
+    }, 
+    {
+      "routeTag": "36", 
+      "routeTitle": "36-Finch West"
+    }, 
+    {
+      "routeTag": "37", 
+      "routeTitle": "37-Islington"
+    }, 
+    {
+      "routeTag": "38", 
+      "routeTitle": "38-Highland Creek"
+    }, 
+    {
+      "routeTag": "39", 
+      "routeTitle": "39-Finch East"
+    }, 
+    {
+      "routeTag": "40", 
+      "routeTitle": "40-Junction"
+    }, 
+    {
+      "routeTag": "41", 
+      "routeTitle": "41-Keele"
+    }, 
+    {
+      "routeTag": "42", 
+      "routeTitle": "42-Cummer"
+    }, 
+    {
+      "routeTag": "43", 
+      "routeTitle": "43-Kennedy"
+    }, 
+    {
+      "routeTag": "44", 
+      "routeTitle": "44-Kipling South"
+    }, 
+    {
+      "routeTag": "45", 
+      "routeTitle": "45-Kipling"
+    }, 
+    {
+      "routeTag": "46", 
+      "routeTitle": "46-Martin Grove"
+    }, 
+    {
+      "routeTag": "47", 
+      "routeTitle": "47-Lansdowne"
+    }, 
+    {
+      "routeTag": "48", 
+      "routeTitle": "48-Rathburn"
+    }, 
+    {
+      "routeTag": "49", 
+      "routeTitle": "49-Bloor West"
+    }, 
+    {
+      "routeTag": "50", 
+      "routeTitle": "50-Burnhamthorpe"
+    }, 
+    {
+      "routeTag": "51", 
+      "routeTitle": "51-Leslie"
+    }, 
+    {
+      "routeTag": "52", 
+      "routeTitle": "52-Lawrence West"
+    }, 
+    {
+      "routeTag": "53", 
+      "routeTitle": "53-Steeles East"
+    }, 
+    {
+      "routeTag": "54", 
+      "routeTitle": "54-Lawrence East"
+    }, 
+    {
+      "routeTag": "55", 
+      "routeTitle": "55-Warren Park"
+    }, 
+    {
+      "routeTag": "56", 
+      "routeTitle": "56-Leaside"
+    }, 
+    {
+      "routeTag": "57", 
+      "routeTitle": "57-Midland"
+    }, 
+    {
+      "routeTag": "58", 
+      "routeTitle": "58-Malton"
+    }, 
+    {
+      "routeTag": "59", 
+      "routeTitle": "59-Maple Leaf"
+    }, 
+    {
+      "routeTag": "60", 
+      "routeTitle": "60-Steeles West"
+    }, 
+    {
+      "routeTag": "61", 
+      "routeTitle": "61-Avenue Rd North"
+    }, 
+    {
+      "routeTag": "62", 
+      "routeTitle": "62-Mortimer"
+    }, 
+    {
+      "routeTag": "63", 
+      "routeTitle": "63-Ossington"
+    }, 
+    {
+      "routeTag": "64", 
+      "routeTitle": "64-Main"
+    }, 
+    {
+      "routeTag": "65", 
+      "routeTitle": "65-Parliament"
+    }, 
+    {
+      "routeTag": "66", 
+      "routeTitle": "66-Prince Edward"
+    }, 
+    {
+      "routeTag": "67", 
+      "routeTitle": "67-Pharmacy"
+    }, 
+    {
+      "routeTag": "68", 
+      "routeTitle": "68-Warden"
+    }, 
+    {
+      "routeTag": "69", 
+      "routeTitle": "69-Warden South"
+    }, 
+    {
+      "routeTag": "70", 
+      "routeTitle": "70-O'Connor"
+    }, 
+    {
+      "routeTag": "71", 
+      "routeTitle": "71-Runnymede"
+    }, 
+    {
+      "routeTag": "72", 
+      "routeTitle": "72-Pape"
+    }, 
+    {
+      "routeTag": "73", 
+      "routeTitle": "73-Royal York"
+    }, 
+    {
+      "routeTag": "74", 
+      "routeTitle": "74-Mt Pleasant"
+    }, 
+    {
+      "routeTag": "75", 
+      "routeTitle": "75-Sherbourne"
+    }, 
+    {
+      "routeTag": "76", 
+      "routeTitle": "76-Royal York South"
+    }, 
+    {
+      "routeTag": "77", 
+      "routeTitle": "77-Swansea"
+    }, 
+    {
+      "routeTag": "78", 
+      "routeTitle": "78-St Andrews"
+    }, 
+    {
+      "routeTag": "79", 
+      "routeTitle": "79-Scarlett Rd"
+    }, 
+    {
+      "routeTag": "80", 
+      "routeTitle": "80-Queensway"
+    }, 
+    {
+      "routeTag": "81", 
+      "routeTitle": "81-Thorncliffe Park"
+    }, 
+    {
+      "routeTag": "82", 
+      "routeTitle": "82-Rosedale"
+    }, 
+    {
+      "routeTag": "83", 
+      "routeTitle": "83-Jones"
+    }, 
+    {
+      "routeTag": "84", 
+      "routeTitle": "84-Sheppard West"
+    }, 
+    {
+      "routeTag": "85", 
+      "routeTitle": "85-Sheppard East"
+    }, 
+    {
+      "routeTag": "86", 
+      "routeTitle": "86-Scarborough"
+    }, 
+    {
+      "routeTag": "87", 
+      "routeTitle": "87-Cosburn"
+    }, 
+    {
+      "routeTag": "88", 
+      "routeTitle": "88-South Leaside"
+    }, 
+    {
+      "routeTag": "89", 
+      "routeTitle": "89-Weston"
+    }, 
+    {
+      "routeTag": "90", 
+      "routeTitle": "90-Vaughan"
+    }, 
+    {
+      "routeTag": "91", 
+      "routeTitle": "91-Woodbine"
+    }, 
+    {
+      "routeTag": "92", 
+      "routeTitle": "92-Woodbine South"
+    }, 
+    {
+      "routeTag": "94", 
+      "routeTitle": "94-Wellesley"
+    }, 
+    {
+      "routeTag": "95", 
+      "routeTitle": "95-York Mills"
+    }, 
+    {
+      "routeTag": "96", 
+      "routeTitle": "96-Wilson"
+    }, 
+    {
+      "routeTag": "97", 
+      "routeTitle": "97-Yonge"
+    }, 
+    {
+      "routeTag": "98", 
+      "routeTitle": "98-Willowdale - Senlac"
+    }, 
+    {
+      "routeTag": "99", 
+      "routeTitle": "99-Arrow Road"
+    }, 
+    {
+      "routeTag": "100", 
+      "routeTitle": "100-Flemingdon Park"
+    }, 
+    {
+      "routeTag": "101", 
+      "routeTitle": "101-Downsview Park"
+    }, 
+    {
+      "routeTag": "102", 
+      "routeTitle": "102-Markham Rd"
+    }, 
+    {
+      "routeTag": "103", 
+      "routeTitle": "103-Mt Pleasant North"
+    }, 
+    {
+      "routeTag": "104", 
+      "routeTitle": "104-Faywood"
+    }, 
+    {
+      "routeTag": "105", 
+      "routeTitle": "105-Dufferin North"
+    }, 
+    {
+      "routeTag": "106", 
+      "routeTitle": "106-York University"
+    }, 
+    {
+      "routeTag": "107", 
+      "routeTitle": "107-Keele North"
+    }, 
+    {
+      "routeTag": "108", 
+      "routeTitle": "108-Downsview"
+    }, 
+    {
+      "routeTag": "109", 
+      "routeTitle": "109-Ranee"
+    }, 
+    {
+      "routeTag": "110", 
+      "routeTitle": "110-Islington South"
+    }, 
+    {
+      "routeTag": "111", 
+      "routeTitle": "111-East Mall"
+    }, 
+    {
+      "routeTag": "112", 
+      "routeTitle": "112-West Mall"
+    }, 
+    {
+      "routeTag": "113", 
+      "routeTitle": "113-Danforth"
+    }, 
+    {
+      "routeTag": "115", 
+      "routeTitle": "115-Silver Hills"
+    }, 
+    {
+      "routeTag": "116", 
+      "routeTitle": "116-Morningside"
+    }, 
+    {
+      "routeTag": "117", 
+      "routeTitle": "117-Alness"
+    }, 
+    {
+      "routeTag": "120", 
+      "routeTitle": "120-Calvington"
+    }, 
+    {
+      "routeTag": "122", 
+      "routeTitle": "122-Graydon Hall"
+    }, 
+    {
+      "routeTag": "123", 
+      "routeTitle": "123-Shorncliffe"
+    }, 
+    {
+      "routeTag": "124", 
+      "routeTitle": "124-Sunnybrook"
+    }, 
+    {
+      "routeTag": "125", 
+      "routeTitle": "125-Drewry"
+    }, 
+    {
+      "routeTag": "126", 
+      "routeTitle": "126-Christie"
+    }, 
+    {
+      "routeTag": "127", 
+      "routeTitle": "127-Davenport"
+    }, 
+    {
+      "routeTag": "129", 
+      "routeTitle": "129-McCowan North"
+    }, 
+    {
+      "routeTag": "130", 
+      "routeTitle": "130-Middlefield"
+    }, 
+    {
+      "routeTag": "131", 
+      "routeTitle": "131-Nugget"
+    }, 
+    {
+      "routeTag": "132", 
+      "routeTitle": "132-Milner"
+    }, 
+    {
+      "routeTag": "133", 
+      "routeTitle": "133-Neilson"
+    }, 
+    {
+      "routeTag": "134", 
+      "routeTitle": "134-Progress"
+    }, 
+    {
+      "routeTag": "135", 
+      "routeTitle": "135-Gerrard"
+    }, 
+    {
+      "routeTag": "139", 
+      "routeTitle": "139-Finch - Don Mills"
+    }, 
+    {
+      "routeTag": "141", 
+      "routeTitle": "141-Downtown/Mt Pleasant Express"
+    }, 
+    {
+      "routeTag": "142", 
+      "routeTitle": "142-Downtown/Avenue Rd Express"
+    }, 
+    {
+      "routeTag": "143", 
+      "routeTitle": "143-Downtown/Beach Express"
+    }, 
+    {
+      "routeTag": "144", 
+      "routeTitle": "144-Downtown/Don Valley Express"
+    }, 
+    {
+      "routeTag": "145", 
+      "routeTitle": "145-Downtown/Humber Bay Express"
+    }, 
+    {
+      "routeTag": "160", 
+      "routeTitle": "160-Bathurst North"
+    }, 
+    {
+      "routeTag": "161", 
+      "routeTitle": "161-Rogers Rd"
+    }, 
+    {
+      "routeTag": "162", 
+      "routeTitle": "162-Lawrence - Donway"
+    }, 
+    {
+      "routeTag": "165", 
+      "routeTitle": "165-Weston Rd North"
+    }, 
+    {
+      "routeTag": "167", 
+      "routeTitle": "167-Pharmacy North"
+    }, 
+    {
+      "routeTag": "168", 
+      "routeTitle": "168-Symington"
+    }, 
+    {
+      "routeTag": "169", 
+      "routeTitle": "169-Huntingwood"
+    }, 
+    {
+      "routeTag": "171", 
+      "routeTitle": "171-Mount Dennis"
+    }, 
+    {
+      "routeTag": "190", 
+      "routeTitle": "190-Scarborough Centre Rocket"
+    }, 
+    {
+      "routeTag": "191", 
+      "routeTitle": "191-Highway 27 Rocket"
+    }, 
+    {
+      "routeTag": "192", 
+      "routeTitle": "192-Airport Rocket"
+    }, 
+    {
+      "routeTag": "196", 
+      "routeTitle": "196-York University Rocket"
+    }, 
+    {
+      "routeTag": "199", 
+      "routeTitle": "199-Finch Rocket"
+    }, 
+    {
+      "routeTag": "224", 
+      "routeTitle": "224-Victoria Park North"
+    }, 
+    {
+      "routeTag": "300", 
+      "routeTitle": "300-Bloor - Danforth"
+    }, 
+    {
+      "routeTag": "301", 
+      "routeTitle": "301-Queen"
+    }, 
+    {
+      "routeTag": "302", 
+      "routeTitle": "302-Danforth Rd - McCowan"
+    }, 
+    {
+      "routeTag": "303", 
+      "routeTitle": "303-Don Mills"
+    }, 
+    {
+      "routeTag": "305", 
+      "routeTitle": "305-Eglinton East"
+    }, 
+    {
+      "routeTag": "306", 
+      "routeTitle": "306-Carlton"
+    }, 
+    {
+      "routeTag": "307", 
+      "routeTitle": "307-Eglinton West"
+    }, 
+    {
+      "routeTag": "308", 
+      "routeTitle": "308-Finch East"
+    }, 
+    {
+      "routeTag": "309", 
+      "routeTitle": "309-Finch West"
+    }, 
+    {
+      "routeTag": "310", 
+      "routeTitle": "310-Bathurst"
+    }, 
+    {
+      "routeTag": "311", 
+      "routeTitle": "311-Islington"
+    }, 
+    {
+      "routeTag": "312", 
+      "routeTitle": "312-St Clair"
+    }, 
+    {
+      "routeTag": "313", 
+      "routeTitle": "313-Jane"
+    }, 
+    {
+      "routeTag": "316", 
+      "routeTitle": "316-Ossington"
+    }, 
+    {
+      "routeTag": "319", 
+      "routeTitle": "319-Wilson"
+    }, 
+    {
+      "routeTag": "320", 
+      "routeTitle": "320-Yonge"
+    }, 
+    {
+      "routeTag": "321", 
+      "routeTitle": "321-York Mills"
+    }, 
+    {
+      "routeTag": "322", 
+      "routeTitle": "322-Coxwell"
+    }, 
+    {
+      "routeTag": "324", 
+      "routeTitle": "324-Victoria Park"
+    }, 
+    {
+      "routeTag": "329", 
+      "routeTitle": "329-Dufferin"
+    }, 
+    {
+      "routeTag": "352", 
+      "routeTitle": "352-Lawrence West"
+    }, 
+    {
+      "routeTag": "353", 
+      "routeTitle": "353-Steeles East"
+    }, 
+    {
+      "routeTag": "354", 
+      "routeTitle": "354-Lawrence East"
+    }, 
+    {
+      "routeTag": "385", 
+      "routeTitle": "385-Sheppard East"
+    }, 
+    {
+      "routeTag": "501", 
+      "routeTitle": "501-Queen"
+    }, 
+    {
+      "routeTag": "502", 
+      "routeTitle": "502-Downtowner"
+    }, 
+    {
+      "routeTag": "503", 
+      "routeTitle": "503-Kingston Rd"
+    }, 
+    {
+      "routeTag": "504", 
+      "routeTitle": "504-King"
+    }, 
+    {
+      "routeTag": "505", 
+      "routeTitle": "505-Dundas"
+    }, 
+    {
+      "routeTag": "506", 
+      "routeTitle": "506-Carlton"
+    }, 
+    {
+      "routeTag": "508", 
+      "routeTitle": "508-Lake Shore Rd"
+    }, 
+    {
+      "routeTag": "509", 
+      "routeTitle": "509-Harbourfront"
+    }, 
+    {
+      "routeTag": "510", 
+      "routeTitle": "510-Spadina"
+    }, 
+    {
+      "routeTag": "511", 
+      "routeTitle": "511-Bathurst"
+    }, 
+    {
+      "routeTag": "512", 
+      "routeTitle": "512-St Clair"
+    }
+  ]
+}
