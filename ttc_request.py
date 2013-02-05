@@ -48,9 +48,10 @@ def getRoutes():
 
 def getStops():
 	stopList = []
-	routeList = getRoutes()
+	with open('data/ttc_routes.json') as ttcRoutes:
+		routeList = json.load(ttcRoutes)['routes']
 	for route in routeList:
-		currentRoute = requestNextBusData('routeConfig', 'r='+route[0]+'&terse')
+		currentRoute = requestNextBusData('routeConfig', 'r='+route['routeTag']+'&terse')
 		soup = BeautifulSoup(currentRoute, 'xml')
 		rootCurrentRoute = soup.route.find_all('stop', recursive=False)
 		for stop in rootCurrentRoute:
