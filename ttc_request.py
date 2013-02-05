@@ -50,11 +50,11 @@ def getStops():
 	routeList = getRoutes()
 	for route in routeList:
 		currentRoute = requestNextBusData('routeConfig', 'r='+route[0]+'&terse')
-		rootCurrentRoute = ET.fromstring(currentRoute)
-		for route in rootCurrentRoute.findall('route'):
-			for stop in route.findall('stop'):
-				stopList.append((stop.attrib["tag"], route.attrib["tag"], stop.attrib["lat"], stop.attrib["lon"]))
-	stopJSON = { "Stops" : stopList }
+		soup = BeautifulSoup(currentRoute, 'xml')
+		rootCurrentRoute = soup.route.find_all('stop', recursive=False)
+		for stop in rootCurrentRoute:
+			stopList.append({'routeTag': soup.route['tag'], 'routeTitle': soup.route['title'], 'stopTag': stop['tag'], 'lat': stop['lat'], 'lon': stop['lon']})
+	stopJSON = { "stops" : stopList }
 	return json.dumps(stopJSON, indent=2)
 
 def getPredictions(latitude, longitude):
@@ -89,8 +89,9 @@ def getPredictions(latitude, longitude):
 	return json.dumps(predictionJSON, indent=2)
 
 if __name__=="__main__":
-	# print getPredictions(43.7739, -79.41427)
+	print getPredictions(43.7739, -79.41427)
 	# print getRoutes()
-	print getStops()
+	# print getStops()
 	# with open('data/ttc_stops.json', 'w') as ttcStops:
 	# 	ttcStops.write(getStops())
+	# print getVehicles()
