@@ -9,7 +9,7 @@ def getAlerts():
 	advisory_wrap = soup.find(class_="advisory-wrap")
 	alerts = []
 	for alert_content in advisory_wrap.find_all('div'):
-		alerts.append((alert_content.find(class_="veh-replace").string, alert_content.find(class_="alert-updated").string))
+		alerts.append((alert_content.find(class_="veh-replace").string, alert_content.find(class_="alert-updated").string[13:]))
 	return alerts
 
 if __name__=="__main__":
