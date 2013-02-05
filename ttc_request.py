@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-import json, math, requests
+import json, math, requests, time
 from bs4 import BeautifulSoup
 import xml.etree.ElementTree as ET
 
@@ -90,12 +90,35 @@ def getPredictions(latitude, longitude):
 	predictionJSON = { "Predictions" : predictionList }
 	return json.dumps(predictionJSON, indent=2)
 
+def getVehicles():
+	now = int(time.time() * 1000)
+	twentySecondsAgo = now - (20 * 1000)
+	lastRequestTime = 0
+	with open('data/ttc_vehicles.json') as ttcVehicles:
+		vehiclesJSON = json.load(ttcVehicles)
+		lastRequestTime = int(vehiclesJSON['5']['lastRequestTime'])
+	if lastRequestTime < twentySecondsAgo:
+		vehicles = requestNextBusData('vehicleLocations', 'r='+'5'+'&t='+str(lastRequestTime))
+		# vehicles = '<?xml version="1.0" encoding="utf-8" ?> \
+	# <body copyright="All data copyright Toronto Transit Commission 2013.">\
+	# <vehicle id="1377" routeTag="5" dirTag="5_0_5" lat="43.706066" lon="-79.400146" secsSinceReport="3" predictable="true" heading="348"/>\
+	# <vehicle id="1383" routeTag="5" dirTag="5_0_5" lat="43.660568" lon="-79.390984" secsSinceReport="16" predictable="true" heading="83"/>\
+	# <vehicle id="8312" routeTag="5" dirTag="5_1_5" lat="43.676666" lon="-79.397285" secsSinceReport="0" predictable="true" heading="344"/>\
+	# <lastTime time="1360019007607"/>\
+	# </body>'
+		soup = BeautifulSoup(vehicles, 'xml')
+		vehiclesJSON = {}
+		vehicleList = []
+		for vehicle in soup.find_all('vehicle'):
+			vehicleList.append({ 'id' : vehicle['id'], 'dirTag' : vehicle['dirTag'], 'lat' : float(vehicle['lat']), 'lon' : float(vehicle['lon']), 'heading' : int(vehicle['heading']), 'reported' : int(vehicle['secsSinceReport']), 'predictable' : vehicle['predictable']})
+		vehiclesJSON.update({ '5' : {'lastRequestTime': soup.lastTime['time'], 'vehicles': vehicleList}})
+		open('data/ttc_vehicles.json', 'w').write(json.dumps(vehiclesJSON, indent=2))
+	return json.dumps(vehiclesJSON, indent=2)
+
 if __name__=="__main__":
-	print getPredictions(43.7739, -79.41427)
+	# print getPredictions(43.7739, -79.41427)
 	# print getRoutes()
-	# with open('data/ttc_routes.json', 'w') as ttcRoutes:
-	# 	ttcRoutes.write(getRoutes())
+	# open('data/ttc_routes.json', 'w').write(getRoutes())
 	# print getStops()
-	# with open('data/ttc_stops.json', 'w') as ttcStops:
-	# 	ttcStops.write(getStops())
-	# print getVehicles()
+	# open('data/ttc_stops.json', 'w').write(getStops())
+	getVehicles()

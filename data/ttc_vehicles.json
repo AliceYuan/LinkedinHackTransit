@@ -1,0 +1,25 @@
+{
+  "5": {
+    "vehicles": [
+      {
+        "lon": -79.390465, 
+        "heading": 346, 
+        "reported": 5, 
+        "predictable": "true", 
+        "lat": 43.663383, 
+        "dirTag": "5_1_5", 
+        "id": "8165"
+      }, 
+      {
+        "lon": -79.405098, 
+        "heading": 164, 
+        "reported": 7, 
+        "predictable": "true", 
+        "lat": 43.702133, 
+        "dirTag": "5_0_5", 
+        "id": "8341"
+      }
+    ], 
+    "lastRequestTime": "1360102800653"
+  }
+}
