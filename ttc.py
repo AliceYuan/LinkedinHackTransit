@@ -115,6 +115,15 @@ def getVehicles():
 		open('data/ttc_vehicles.json', 'w').write(json.dumps(vehiclesJSON, indent=2))
 	return json.dumps(vehiclesJSON, indent=2)
 
+def getAlerts():
+	index_html = requests.get('http://ttc.ca/Service_Advisories/all_service_alerts.jsp')
+	soup = BeautifulSoup(index_html.text)
+	advisory_wrap = soup.find(class_="advisory-wrap")
+	alerts = []
+	for alert_content in advisory_wrap.find_all('div'):
+		alerts.append((alert_content.find(class_="veh-replace").string, alert_content.find(class_="alert-updated").string[13:]))
+	return alerts
+
 if __name__=="__main__":
 	# print getPredictions(43.7739, -79.41427)
 	# print getRoutes()
@@ -122,3 +131,4 @@ if __name__=="__main__":
 	# print getStops()
 	# open('data/ttc_stops.json', 'w').write(getStops())
 	getVehicles()
+	# print getAlerts()
