@@ -2,7 +2,6 @@
 
 import json, math, requests, time
 from bs4 import BeautifulSoup
-import xml.etree.ElementTree as ET
 
 def getNextBusData(params):
 	payload = {}
@@ -52,7 +51,6 @@ def distance(origin, destination):
 	lat1, lon1 = origin
 	lat2, lon2 = destination
 	radius = 6371 # km
-
 	dlat = math.radians(lat2-lat1)
 	dlon = math.radians(lon2-lon1)
 	a = math.sin(dlat/2) * math.sin(dlat/2) + math.cos(math.radians(lat1)) \
@@ -63,32 +61,23 @@ def distance(origin, destination):
 
 def getPredictions(latitude, longitude):
 	predictionList = []
-	numPredictions = 0
-	check = False
-	dictionary = {}
 	nearbyStops = json.loads(getNearbyStops(latitude, longitude))['stops']
-	for stop in nearbyStops:
-		if check:
-			break
-		predictions = getNextBusData({'command': 'predictions', 'r': stop['routeTag'], 's': ['stopTag']})
-		rootPredictions = ET.fromstring(predictions)
-		for predictions in rootPredictions.findall('predictions'):
-			if check:
-				break
-			if 'dirTitleBecauseNoPredictions' not in predictions.attrib:
-				numPredictions += 1
-				if(numPredictions == 6):
-					check = True
-					break
-				for direction in predictions.findall('direction'):
-					minutes = []
-					for prediction in direction.findall('prediction'):
-						minutes.append(prediction.attrib["minutes"])
-					if predictions.attrib["routeTag"] + direction.attrib["title"] not in dictionary:
-						predictionList.append((predictions.attrib["stopTag"], predictions.attrib["routeTag"], stop[2], stop[3], predictions.attrib["stopTitle"], direction.attrib["title"], minutes))
-						dictionary[predictions.attrib["routeTag"] + direction.attrib["title"]] = 1
-					else:
-						numPredictions -= 1
+	for stop in nearbyStops[:5]:
+		predictions = getNextBusData({'command': 'predictions', 'r': stop['routeTag'], 's': stop['stopTag']})
+		soup = BeautifulSoup(predictions, 'xml')
+		predictions = soup.predictions
+		if predictions.has_attr('dirTitleBecauseNoPredictions'):
+			predictionList.append({'routeTag': predictions['routeTag'], 'routeTitle': predictions['routeTitle'], 'stopTag': predictions['stopTag'], 'stopTitle': predictions['stopTitle'], 'minutes': ['-']})
+		else:
+			dList = []
+			for direction in predictions.find_all('direction'):
+				pList = []
+				mList = []
+				for prediction in direction.find_all('prediction'):
+					pList.append({'branch': prediction['branch'], 'dirTag': prediction['dirTag'], 'vehicle': prediction['vehicle'], 'minutes': prediction['minutes'], 'epochTime': prediction['epochTime']})
+					mList.append(prediction['minutes'])
+				dList.append({direction['title']: pList})
+			predictionList.append({'routeTag': predictions['routeTag'], 'routeTitle': predictions['routeTitle'], 'stopTag': predictions['stopTag'], 'stopTitle': predictions['stopTitle'], 'directions': dList, 'minutes': mList})
 	predictionJSON = { 'predictions' : predictionList }
 	return json.dumps(predictionJSON, indent=4)
 
@@ -132,6 +121,6 @@ if __name__=="__main__":
 	# print getStops()
 	# open('data/ttc_stops.json', 'w').write(getStops())
 	# print getNearbyStops(43.7739, -79.41427)
-	# print getPredictions(43.7739, -79.41427)
+	print getPredictions(43.7739, -79.41427)
 	# getVehicles()
 	# print getAlerts()
