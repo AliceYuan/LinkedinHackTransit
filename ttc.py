@@ -4,24 +4,49 @@ import json, math, requests, time
 from bs4 import BeautifulSoup
 import xml.etree.ElementTree as ET
 
-def requestNextBusData(commandName, params):
-	base_url = 'http://webservices.nextbus.com/service/publicXMLFeed'
-	agencyTag = 'ttc'
-	request_url = base_url + '?' + 'command=' + commandName + '&' + 'a=' + agencyTag + '&' + params
-	result = requests.get(request_url).text
-	return result
+def getNextBusData(params):
+	payload = {}
+	for paramName, param in params.iteritems():
+		payload.update({paramName: param})
+	payload.update({'a': 'ttc'})
+	r = requests.get('http://webservices.nextbus.com/service/publicXMLFeed', params=payload)
+	return r.text
+
+def getRoutes():
+	routes = getNextBusData({'command': 'routeList'})
+	soup = BeautifulSoup(routes, 'xml')
+	rootRoutelist = soup.body.find_all('route')
+	routeList = []
+	for route in rootRoutelist:
+		routeList.append({'routeTag': route['tag'], 'routeTitle': route['title']})
+	routeJSON = { 'routes' : routeList }
+	return json.dumps(routeJSON, indent=4)
+
+def getStops():
+	with open('data/ttc_routes.json') as ttcRoutes:
+		routeList = json.load(ttcRoutes)['routes']
+	stopList = []
+	for route in routeList:
+		currentRoute = getNextBusData({'command': 'routeConfig', 'r': route['routeTag'], 'terse': ''})
+		soup = BeautifulSoup(currentRoute, 'xml')
+		rootCurrentRoute = soup.route.find_all('stop', recursive=False)
+		for stop in rootCurrentRoute:
+			stopList.append({'routeTag': soup.route['tag'], 'routeTitle': soup.route['title'], 'stopTag': stop['tag'], 'lat': float(stop['lat']), 'lon': float(stop['lon'])})
+	stopJSON = { 'stops' : stopList }
+	return json.dumps(stopJSON, indent=4)
 
 def getNearbyStops(latitude, longitude):
 	stops = []
 	distances = []
 	with open('data/ttc_stops.json') as ttcStops:
-		stopJSON = json.load(ttcStops)
-		stops = stopJSON["Stops"]
+		stops = json.load(ttcStops)['stops']
 	for stop in stops:
-		distances.append(distance([latitude, longitude], [float(stop[2]), float(stop[3])]))
+		d = distance([latitude, longitude], [float(stop['lat']), float(stop['lon'])])
+		stop.update({'distance': d})
+		distances.append(d)
 	stops = [stops for (distances, stops) in sorted(zip(distances, stops))]
-	stopsJSON = { "Stops" : stops }
-	return json.dumps(stopsJSON, indent=2)
+	stopsJSON = { 'stops' : stops }
+	return json.dumps(stopsJSON, indent=4)
 
 def distance(origin, destination):
 	lat1, lon1 = origin
@@ -36,46 +61,23 @@ def distance(origin, destination):
 	d = radius * c
 	return d
 
-def getRoutes():
-	routes = requestNextBusData('routeList', 'r=')
-	soup = BeautifulSoup(routes, 'xml')
-	rootRoutelist = soup.body.find_all('route')
-	routeList = []
-	for route in rootRoutelist:
-		routeList.append({'routeTag': route['tag'], 'routeTitle': route['title']})
-	routeJSON = { 'routes' : routeList }
-	return json.dumps(routeJSON, indent=2)
-
-def getStops():
-	stopList = []
-	with open('data/ttc_routes.json') as ttcRoutes:
-		routeList = json.load(ttcRoutes)['routes']
-	for route in routeList:
-		currentRoute = requestNextBusData('routeConfig', 'r='+route['routeTag']+'&terse')
-		soup = BeautifulSoup(currentRoute, 'xml')
-		rootCurrentRoute = soup.route.find_all('stop', recursive=False)
-		for stop in rootCurrentRoute:
-			stopList.append({'routeTag': soup.route['tag'], 'routeTitle': soup.route['title'], 'stopTag': stop['tag'], 'lat': stop['lat'], 'lon': stop['lon']})
-	stopJSON = { 'stops' : stopList }
-	return json.dumps(stopJSON, indent=2)
-
 def getPredictions(latitude, longitude):
 	predictionList = []
 	numPredictions = 0
 	check = False
 	dictionary = {}
-	nearbyStops = json.loads(getNearbyStops(latitude, longitude))["Stops"]
+	nearbyStops = json.loads(getNearbyStops(latitude, longitude))['stops']
 	for stop in nearbyStops:
 		if check:
 			break
-		predictions = requestNextBusData('predictions', 'r='+stop[1]+'&s='+stop[0])
+		predictions = getNextBusData({'command': 'predictions', 'r': stop['routeTag'], 's': ['stopTag']})
 		rootPredictions = ET.fromstring(predictions)
 		for predictions in rootPredictions.findall('predictions'):
 			if check:
 				break
 			if 'dirTitleBecauseNoPredictions' not in predictions.attrib:
 				numPredictions += 1
-				if(numPredictions == 11):
+				if(numPredictions == 6):
 					check = True
 					break
 				for direction in predictions.findall('direction'):
@@ -87,8 +89,8 @@ def getPredictions(latitude, longitude):
 						dictionary[predictions.attrib["routeTag"] + direction.attrib["title"]] = 1
 					else:
 						numPredictions -= 1
-	predictionJSON = { "Predictions" : predictionList }
-	return json.dumps(predictionJSON, indent=2)
+	predictionJSON = { 'predictions' : predictionList }
+	return json.dumps(predictionJSON, indent=4)
 
 def getVehicles():
 	now = int(time.time() * 1000)
@@ -116,8 +118,8 @@ def getVehicles():
 	return json.dumps(vehiclesJSON, indent=2)
 
 def getAlerts():
-	index_html = requests.get('http://ttc.ca/Service_Advisories/all_service_alerts.jsp')
-	soup = BeautifulSoup(index_html.text)
+	r = requests.get('http://ttc.ca/Service_Advisories/all_service_alerts.jsp')
+	soup = BeautifulSoup(r.text)
 	advisory_wrap = soup.find(class_="advisory-wrap")
 	alerts = []
 	for alert_content in advisory_wrap.find_all('div'):
@@ -125,10 +127,11 @@ def getAlerts():
 	return alerts
 
 if __name__=="__main__":
-	# print getPredictions(43.7739, -79.41427)
 	# print getRoutes()
 	# open('data/ttc_routes.json', 'w').write(getRoutes())
 	# print getStops()
 	# open('data/ttc_stops.json', 'w').write(getStops())
-	getVehicles()
+	# print getNearbyStops(43.7739, -79.41427)
+	# print getPredictions(43.7739, -79.41427)
+	# getVehicles()
 	# print getAlerts()
