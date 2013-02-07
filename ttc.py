@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-import json, math, requests, time
+import json, math, requests, time, collections
 from bs4 import BeautifulSoup
 
 def getNextBusData(params):
@@ -62,7 +62,8 @@ def distance(origin, destination):
 def getPredictions(latitude, longitude):
 	predictionList = []
 	nearbyStops = json.loads(getNearbyStops(latitude, longitude))['stops']
-	for stop in nearbyStops[:5]:
+	nearbyStops = filterNearbyStops(nearbyStops)
+	for stop in nearbyStops:
 		predictions = getNextBusData({'command': 'predictions', 'r': stop['routeTag'], 's': stop['stopTag']})
 		soup = BeautifulSoup(predictions, 'xml')
 		predictions = soup.predictions
@@ -80,6 +81,17 @@ def getPredictions(latitude, longitude):
 			predictionList.append({'routeTag': predictions['routeTag'], 'routeTitle': predictions['routeTitle'], 'stopTag': predictions['stopTag'], 'stopTitle': predictions['stopTitle'], 'distance': stop['distance'], 'directions': dList, 'minutes': mList})
 	predictionJSON = { 'predictions' : predictionList }
 	return json.dumps(predictionJSON, indent=4)
+
+def filterNearbyStops(stops):
+	uniqueStops = collections.OrderedDict()
+	uniqueStopList = []
+	for stop in stops:
+		if stop['routeTag'] not in uniqueStops:
+			uniqueStops.update({stop['routeTag']: stop})
+	for uniqueStop in uniqueStops.values():
+		uniqueStopList.append(uniqueStop)
+	uniqueStopList = uniqueStopList[:5]
+	return uniqueStopList
 
 def getVehicles():
 	now = int(time.time() * 1000)
