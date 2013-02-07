@@ -67,7 +67,7 @@ def getPredictions(latitude, longitude):
 		soup = BeautifulSoup(predictions, 'xml')
 		predictions = soup.predictions
 		if predictions.has_attr('dirTitleBecauseNoPredictions'):
-			predictionList.append({'routeTag': predictions['routeTag'], 'routeTitle': predictions['routeTitle'], 'stopTag': predictions['stopTag'], 'stopTitle': predictions['stopTitle'], 'minutes': ['-']})
+			predictionList.append({'routeTag': predictions['routeTag'], 'routeTitle': predictions['routeTitle'], 'stopTag': predictions['stopTag'], 'stopTitle': predictions['stopTitle'], 'distance': stop['distance'], 'minutes': ['-']})
 		else:
 			dList = []
 			for direction in predictions.find_all('direction'):
@@ -77,7 +77,7 @@ def getPredictions(latitude, longitude):
 					pList.append({'branch': prediction['branch'], 'dirTag': prediction['dirTag'], 'vehicle': prediction['vehicle'], 'minutes': prediction['minutes'], 'epochTime': prediction['epochTime']})
 					mList.append(prediction['minutes'])
 				dList.append({direction['title']: pList})
-			predictionList.append({'routeTag': predictions['routeTag'], 'routeTitle': predictions['routeTitle'], 'stopTag': predictions['stopTag'], 'stopTitle': predictions['stopTitle'], 'directions': dList, 'minutes': mList})
+			predictionList.append({'routeTag': predictions['routeTag'], 'routeTitle': predictions['routeTitle'], 'stopTag': predictions['stopTag'], 'stopTitle': predictions['stopTitle'], 'distance': stop['distance'], 'directions': dList, 'minutes': mList})
 	predictionJSON = { 'predictions' : predictionList }
 	return json.dumps(predictionJSON, indent=4)
 
