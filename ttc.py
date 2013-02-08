@@ -74,7 +74,7 @@ def getPredictions(latitude, longitude):
 			for direction in predictions.find_all('direction'):
 				pList = []
 				for prediction in direction.find_all('prediction'):
-					pList.append({'branch': prediction['branch'], 'dirTag': prediction['dirTag'], 'vehicle': prediction['vehicle'], 'minutes': int(prediction['minutes']), 'epochTime': int(prediction['epochTime'])})
+					pList.append(buildEntry(prediction))
 				dList.append({direction['title']: pList})
 			predictionList.append({'routeTag': predictions['routeTag'], 'routeTitle': predictions['routeTitle'], 'stopTag': predictions['stopTag'], 'stopTitle': predictions['stopTitle'], 'distance': stop['distance'], 'directions': dList})
 	predictionJSON = { 'predictions' : predictionList }
@@ -90,6 +90,13 @@ def filterNearbyStops(stops):
 		uniqueStopList.append(uniqueStop)
 	uniqueStopList = uniqueStopList[:5]
 	return uniqueStopList
+
+def buildEntry(prediction):
+	if 'branch' in prediction.attrs:
+		entry = {'branch': prediction['branch'], 'dirTag': prediction['dirTag'], 'vehicle': prediction['vehicle'], 'minutes': int(prediction['minutes']), 'epochTime': int(prediction['epochTime'])}
+	else:
+		entry = {'dirTag': prediction['dirTag'], 'vehicle': prediction['vehicle'], 'minutes': int(prediction['minutes']), 'epochTime': int(prediction['epochTime'])}
+	return entry
 
 def getVehicles():
 	now = int(time.time() * 1000)
