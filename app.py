@@ -1,11 +1,8 @@
 #!/usr/bin/env python
-import os
-import collections
-import json
+import os, json, collections
 from flask import Flask, request, render_template, Response, url_for, jsonify, send_from_directory
 from werkzeug import SharedDataMiddleware
-from ttc_request import getPredictions
-from time import time
+import ttc
 
 cache = None
 
@@ -34,7 +31,7 @@ def update():
     return "updated cache"
 
 def createResponse(lat,lon):
-    upcoming = getPredictions(float(lat), float(lon))
+    upcoming = ttc.getPredictions(float(lat), float(lon))
     upcoming = json.loads(upcoming)
     stops = collections.OrderedDict()
     for stop in upcoming["Predictions"]:
