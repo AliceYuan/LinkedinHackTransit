@@ -88,7 +88,7 @@ def filterNearbyStops(stops):
 			uniqueStops.update({stop['routeTag']: stop})
 	for uniqueStop in uniqueStops.values():
 		uniqueStopList.append(uniqueStop)
-	uniqueStopList = uniqueStopList[:5]
+	uniqueStopList = uniqueStopList[:10]
 	return uniqueStopList
 
 def buildEntry(prediction):
