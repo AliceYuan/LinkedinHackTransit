@@ -65,26 +65,12 @@
             {{#routes}}
             <li data-theme="c" class="bus" data-json="{{json}}">
                 <a href="#">
-                <div class="col-icon">
-                    <img src="images/bus.png" />
-                    <span class="transit-type"></span>
-                </div>
-                <div class="col-time">
-                    <div class="time-icon-outer">
-                        <div class="time-icon-inner">
-                            <p class="time-text">
-                                <span class="time">{{first_time}} </span>
-                                <!-- <span class="time-metric">mins</span> --!>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-info">
-                       <span class="transit-name"> {{direction}} </span>
-                </div>
+                <img src="images/bus.png" />
+                <span class="transit-name">{{direction}}</span>
+                <span class="ui-li-count">{{first_time}}</span>
                 </a>
             </li>
-            {{/routes}}                    
+            {{/routes}}
             {{/stops}}
         </ul>
         </script>
@@ -98,22 +84,11 @@
             {{#times}}
             <li data-theme="c" class="bus">
                 <a href="#">
-                <div class="col-icon">
-                    <img src="images/bus.png" />
-                    <span class="transit-type"></span>
-                </div>
-                <div class="col-time">
-                    <div class="time-icon-outer">
-                        <div class="time-icon-inner">
-                            <p class="time-text">
-                                <span class="time">{{.}} </span>
-                            </p>
-                        </div>
-                    </div>
-                </div>
+                <img src="images/bus.png" />
                 <div class="col-info">
                        {{direction}}
                 </div>
+				<span class="ui-li-count">{{.}}</span>
                 </a>
             </li>
             {{/times}}    
