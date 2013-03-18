@@ -9,9 +9,9 @@
 		<title>Bus Pointer</title>
 		<link rel="icon" type="image/png" href="images/bus.png">
 		<link rel="apple-touch-icon-precomposed" type="image/png" href="images/apple-touch-icon-precomposed.png">
-		<link href="stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
 		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.css">
 		<link rel="stylesheet" href="fonts/limelight/stylesheet.css" type="text/css">
+		<link href="stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
 		<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
 		<script src="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.js"></script>
 		<script src="js/mustache.js"></script>
@@ -20,62 +20,53 @@
 	</head>
 	<body>
 		<!-- Home -->
-		<div data-role="page" id="page-stops" ata-dom-cache="true" data-prev="search" data-next="maps" data-url="index">
-			<div data-theme="a" data-role="header">
-				<h3 class="app-title">
-					Bus Pointer
-				</h3>
+		<div data-role="page" id="page-stops">
+			<div data-role="header">
+				<h3 class="app-title">Bus Pointer</h3>
 			</div>
 			<div data-role="content" class="app">
 			</div>
 		</div>
 		<!-- Routes page -->
 		<div data-role="page" id="page-routes" data-add-back-btn="true">
-			<div data-theme="a" data-role="header">
-				<h3 class="app-title">
-					Bus Pointer
-				</h3>
+			<div data-role="header">
+				<h3 class="app-title">Bus Pointer</h3>
 			</div>
 			<div data-role="content" class="app">
 			</div>
 		</div>
 		<script type="template/mustache" id="stops-tpl">
-		<img src="{{map}}"/>
-		<ul data-role="listview" data-divider-theme="b" data-inset="true" class="transit-list">
-			{{#stops}}
-			<li data-role="list-divider" role="heading" class="stop" >
-				<span class="alpha-label" style="color:{{color_fg}};">{{letter}}</span> {{name}}
-			</li>
-			{{#routes}}
-			<li data-theme="c" class="bus" data-json="{{json}}">
-				<a href="#">
-				<img src="images/bus.png" />
-				<span class="transit-name">{{direction}}</span>
-				<span class="ui-li-count">{{first_time}}</span>
-				</a>
-			</li>
-			{{/routes}}
-			{{/stops}}
-		</ul>
+			<img src="{{map}}">
+			<ul data-role="listview" data-inset="true" class="transit-list">
+				{{#stops}}
+					<li data-role="list-divider" class="stop" >
+						<span class="alpha-label" style="color:{{color_fg}};">{{letter}}</span> {{name}}
+					</li>
+					{{#routes}}
+						<li class="bus" data-json="{{json}}">
+							<a href="#">
+								<img src="images/bus.png">
+								{{direction}}
+								<span class="ui-li-count">{{first_time}}</span>
+							</a>
+						</li>
+					{{/routes}}
+				{{/stops}}
+			</ul>
 		</script>
 		<script type="template/mustache" id="times-tpl">
-		<ul data-role="listview" data-divider-theme="b" data-inset="true" class="transit-list">
-			{{#routes}}
-			<li data-role="list-divider" role="heading" class="stop">
-				{{name}}
-			</li>
-			{{#times}}
-			<li data-theme="c" class="bus">
-				<a href="#">
-				<img src="images/bus.png" />
-				<div class="col-info">
-					{{direction}}
-				</div>
-				<span class="ui-li-count">{{.}}</span>
-				</a>
-			</li>
-			{{/times}}
-			{{/routes}}
+			<ul data-role="listview" data-inset="true" class="transit-list">
+				{{#routes}}
+					<li data-role="list-divider" class="stop">{{name}}</li>
+					{{#times}}
+						<li class="bus">
+							<img src="images/bus.png">
+							{{direction}}
+							<span class="ui-li-count">{{.}}</span>
+						</li>
+					{{/times}}
+				{{/routes}}
+			</ul>
 		</script>
 	</body>
 </html>
