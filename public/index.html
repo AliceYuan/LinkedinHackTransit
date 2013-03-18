@@ -1,98 +1,82 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-        <meta name="apple-mobile-web-app-title" content="Bus Pointer" />
-        <title>Bus Pointer</title>
-        <link rel="icon" type="image/png" href="images/bus.png" />
-        <link rel="apple-touch-icon-precomposed" type="image/png" href="images/apple-touch-icon-precomposed.png" />
-        <link href="stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" />
-
-        <link rel="stylesheet" href="stylesheets/jquery.mobile-1.2.0.css" />
-        <link rel="stylesheet" href="fonts/limelight/stylesheet.css" type="text/css" charset="utf-8">
- 
-        <script src="js/jquery-1.8.3.js"></script>
-        <script src="js/jquery.mobile-1.2.0.js"></script>
-        <script src="js/mustache.js"></script>
-        <script src="js/mustache_helper.js"></script>
-        <script src="js/main.js"></script>
-        </script>
-    </head>
-    <body>
-
-        <!-- Home -->
-        <div data-role="page" id="page-stops" ata-dom-cache="true" data-prev="search" data-next="maps" data-url="index">
-            <div data-theme="a" data-role="header">
-               <h3 class="app-title">
-                   Bus Pointer
-               </h3>
-               <!-- <div data-role="fieldcontain" class="options"> -->
-               <!--      <select name="select" data-mini="true"> -->
-               <!--          <option value="index" > -->
-               <!--              Nearby -->
-               <!--          </option> -->
-               <!--          <option value="search"> -->
-               <!--              Search -->
-               <!--          </option> -->
-               <!--      </select> -->
-               <!--  </div> --> 
-            </div>
-            <div data-role="content" class="app">
-            </div>
-       </div>
-
-        <!-- Routes page -->
-        <div data-role="page" id="page-routes" data-add-back-btn="true">
-            <div data-theme="a" data-role="header">
-               <h3 class="app-title">
-                   Bus Pointer
-               </h3>
-            </div>
-            <div data-role="content" class="app">
-            </div>
-        </div>
-
-        <script type="template/mustache" id="stops-tpl">
-        <img src="{{map}}"/>
-        <ul data-role="listview" data-divider-theme="b" data-inset="true" class="transit-list">
-            {{#stops}}
-            <li data-role="list-divider" role="heading" class="stop" >
-                <span class="alpha-label" style="color:{{color_fg}};">{{letter}}</span> {{name}}
-            </li>
-            {{#routes}}
-            <li data-theme="c" class="bus" data-json="{{json}}">
-                <a href="#">
-                <img src="images/bus.png" />
-                <span class="transit-name">{{direction}}</span>
-                <span class="ui-li-count">{{first_time}}</span>
-                </a>
-            </li>
-            {{/routes}}
-            {{/stops}}
-        </ul>
-        </script>
-<script type="template/mustache" id="times-tpl">
-
-        <ul data-role="listview" data-divider-theme="b" data-inset="true" class="transit-list">
-            {{#routes}}
-            <li data-role="list-divider" role="heading" class="stop">
-               {{name}}
-            </li>
-            {{#times}}
-            <li data-theme="c" class="bus">
-                <a href="#">
-                <img src="images/bus.png" />
-                <div class="col-info">
-                       {{direction}}
-                </div>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+		<meta name="apple-mobile-web-app-title" content="Bus Pointer" />
+		<title>Bus Pointer</title>
+		<link rel="icon" type="image/png" href="images/bus.png" />
+		<link rel="apple-touch-icon-precomposed" type="image/png" href="images/apple-touch-icon-precomposed.png" />
+		<link href="stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="stylesheets/jquery.mobile-1.2.0.css" />
+		<link rel="stylesheet" href="fonts/limelight/stylesheet.css" type="text/css" charset="utf-8">
+		<script src="js/jquery-1.8.3.js"></script>
+		<script src="js/jquery.mobile-1.2.0.js"></script>
+		<script src="js/mustache.js"></script>
+		<script src="js/mustache_helper.js"></script>
+		<script src="js/main.js"></script>
+		</script>
+	</head>
+	<body>
+		<!-- Home -->
+		<div data-role="page" id="page-stops" ata-dom-cache="true" data-prev="search" data-next="maps" data-url="index">
+			<div data-theme="a" data-role="header">
+				<h3 class="app-title">
+					Bus Pointer
+				</h3>
+			</div>
+			<div data-role="content" class="app">
+			</div>
+		</div>
+		<!-- Routes page -->
+		<div data-role="page" id="page-routes" data-add-back-btn="true">
+			<div data-theme="a" data-role="header">
+				<h3 class="app-title">
+					Bus Pointer
+				</h3>
+			</div>
+			<div data-role="content" class="app">
+			</div>
+		</div>
+		<script type="template/mustache" id="stops-tpl">
+		<img src="{{map}}"/>
+		<ul data-role="listview" data-divider-theme="b" data-inset="true" class="transit-list">
+			{{#stops}}
+			<li data-role="list-divider" role="heading" class="stop" >
+				<span class="alpha-label" style="color:{{color_fg}};">{{letter}}</span> {{name}}
+			</li>
+			{{#routes}}
+			<li data-theme="c" class="bus" data-json="{{json}}">
+				<a href="#">
+				<img src="images/bus.png" />
+				<span class="transit-name">{{direction}}</span>
+				<span class="ui-li-count">{{first_time}}</span>
+				</a>
+			</li>
+			{{/routes}}
+			{{/stops}}
+		</ul>
+		</script>
+		<script type="template/mustache" id="times-tpl">
+		<ul data-role="listview" data-divider-theme="b" data-inset="true" class="transit-list">
+			{{#routes}}
+			<li data-role="list-divider" role="heading" class="stop">
+				{{name}}
+			</li>
+			{{#times}}
+			<li data-theme="c" class="bus">
+				<a href="#">
+				<img src="images/bus.png" />
+				<div class="col-info">
+					{{direction}}
+				</div>
 				<span class="ui-li-count">{{.}}</span>
-                </a>
-            </li>
-            {{/times}}    
-            {{/routes}}    
-        </script>
-    </body>
+				</a>
+			</li>
+			{{/times}}
+			{{/routes}}
+		</script>
+	</body>
 </html>
