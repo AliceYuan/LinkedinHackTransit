@@ -1,50 +1,10 @@
-/* Welcome to Compass.
- * In this file you should write your main styles. (or centralize your imports)
- * Import this file using the following HTML or equivalent:
- * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
-/* line 10, ../sass/screen.scss */
-body {
-  background: white;
-  overflow-x: auto;
-}
-
-/* line 15, ../sass/screen.scss */
-li {
-  list-style: none;
-}
-
-/* line 19, ../sass/screen.scss */
-html {
-  width: 100%;
-  height: 100%;
-}
-
-/* line 26, ../sass/screen.scss */
-.ui-page .ui-header .app-title {
+.app-title {
   margin: 0.5em 0 0 0;
   font-family: 'LimelightRegular',Arial,sans-serif;
   font-size: 1.5em;
 }
-/* line 32, ../sass/screen.scss */
-.ui-page .ui-header .options {
-  margin: 0 auto;
-  width: 100%;
-}
-/* line 36, ../sass/screen.scss */
-.ui-page .ui-header .options .ui-select {
-  width: 78%;
-  margin: 0 auto;
-  display: block;
-  padding: 10px;
-}
 
-/* line 47, ../sass/screen.scss */
-#page-routes .ui-icon-arrow-r {
-  display: none;
-}
-
-/* line 54, ../sass/screen.scss */
-#page-stops .ui-content .transit-list .ui-li-divider .alpha-label, #page-routes .ui-content .transit-list .ui-li-divider .alpha-label {
+#page-stops .ui-content .transit-list .ui-li-divider .alpha-label {
   font-weight: bold;
   /*text-shadow: 1px 1px white;*/
   font-size: 1.5em;
@@ -52,88 +12,4 @@ html {
   padding: 2px 8px;
   margin-right: 10px;
   border-radius: 50%;
-}
-/* line 64, ../sass/screen.scss */
-#page-stops .ui-content .transit-list li.bus, #page-routes .ui-content .transit-list li.bus {
-  min-height: 120px;
-  vertical-align: middle;
-}
-/* line 67, ../sass/screen.scss */
-#page-stops .ui-content .transit-list li.bus .col-icon, #page-routes .ui-content .transit-list li.bus .col-icon {
-  float: left;
-  margin-right: 20px;
-  height: 120px;
-}
-/* line 71, ../sass/screen.scss */
-#page-stops .ui-content .transit-list li.bus .col-icon img, #page-routes .ui-content .transit-list li.bus .col-icon img {
-  height: 40px;
-  margin: 2em auto;
-  float: left;
-}
-/* line 76, ../sass/screen.scss */
-#page-stops .ui-content .transit-list li.bus .col-icon .transit-type, #page-routes .ui-content .transit-list li.bus .col-icon .transit-type {
-  font-size: 1.5em;
-  color: red;
-  position: absolute;
-  left: 35px;
-  bottom: 20px;
-}
-/* line 84, ../sass/screen.scss */
-#page-stops .ui-content .transit-list li.bus .col-info, #page-routes .ui-content .transit-list li.bus .col-info {
-  margin: 1em 0;
-  white-space: normal;
-  margin-right: 60px;
-}
-/* line 90, ../sass/screen.scss */
-#page-stops .ui-content .transit-list li.bus .col-time, #page-routes .ui-content .transit-list li.bus .col-time {
-  position: absolute;
-  right: 40px;
-  display: inline-block;
-}
-/* line 94, ../sass/screen.scss */
-#page-stops .ui-content .transit-list li.bus .col-time .time-icon-outer, #page-routes .ui-content .transit-list li.bus .col-time .time-icon-outer {
-  background: gray;
-  height: 50px;
-  width: 50px;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  -ms-border-radius: 50%;
-  -o-border-radius: 50%;
-  border-radius: 50%;
-  position: relative;
-  margin: 2em 0;
-}
-/* line 102, ../sass/screen.scss */
-#page-stops .ui-content .transit-list li.bus .col-time .time-icon-inner, #page-routes .ui-content .transit-list li.bus .col-time .time-icon-inner {
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  -ms-border-radius: 50%;
-  -o-border-radius: 50%;
-  border-radius: 50%;
-  background: #42A83D;
-  position: absolute;
-  left: 5px;
-  top: 5px;
-  height: 40px;
-  width: 40px;
-}
-/* line 111, ../sass/screen.scss */
-#page-stops .ui-content .transit-list li.bus .col-time .time-icon-inner .time-text, #page-routes .ui-content .transit-list li.bus .col-time .time-icon-inner .time-text {
-  text-align: center;
-  color: white;
-}
-/* line 114, ../sass/screen.scss */
-#page-stops .ui-content .transit-list li.bus .col-time .time-icon-inner .time-text .time, #page-routes .ui-content .transit-list li.bus .col-time .time-icon-inner .time-text .time {
-  margin: 0.5em 0;
-  font-size: 1.9em;
-  display: block;
-  font-weight: bold;
-}
-
-/* line 135, ../sass/screen.scss */
-#navigation .nav-list li {
-  width: 25%;
-  float: left;
-  text-align: center;
-  font: 1.5em white;
 }
